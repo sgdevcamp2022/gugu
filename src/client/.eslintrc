@@ -1,6 +1,6 @@
 {
   "root": true,
-  "plugins": ["eslint-config-airbnb-base", "eslint-plugin-react"],
+  "plugins": ["eslint-config-airbnb", "eslint-plugin-react"],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
