@@ -6,7 +6,7 @@ import SettingContainer from './setting/SettingContainer';
 function App() {
   return (
     <div className="App">
-      <SettingContainer />
+      <SettingContainer settingType="server" />
     </div>
   );
 }
