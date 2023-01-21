@@ -1,5 +1,6 @@
-package com.smilegate.authgateway.filter;
+package com.gugu.gateway;
 
+import jakarta.servlet.annotation.WebFilter;
 import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
+@WebFilter(filterName = "GateWayFilter", urlPatterns = "/*")
 public class GlobalFilter extends AbstractGatewayFilterFactory<GlobalFilter.Config> {
     private static final Logger logger = LogManager.getLogger(GlobalFilter.class);
     public GlobalFilter() {

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9fdf6052-7c15-465d-928f-d8755c192e32" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-cloud/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/eureka/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-cloud/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/src/cloud-gateway/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-cloud/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/src/eureka/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-cloud/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/src/cloud-gateway/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-cloud/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/eureka/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-cloud/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/src/eureka/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-cloud/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/src/cloud-gateway/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-cloud/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/src/eureka/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-cloud/src/main/java/com/smilegate/authcloud/AuthcloudApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eureka/src/main/java/com/gugu/eureka/EurekaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-cloud/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/eureka/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-cloud/src/test/java/com/smilegate/authcloud/AuthcloudApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/eureka/src/test/java/com/smilegate/authcloud/AuthcloudApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-gateway/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/cloud-gateway/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-gateway/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/src/eureka/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-gateway/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/src/cloud-gateway/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-gateway/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/src/eureka/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-gateway/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/cloud-gateway/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-gateway/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/src/cloud-gateway/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-gateway/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/src/eureka/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-gateway/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/src/cloud-gateway/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-gateway/src/main/java/com/smilegate/authgateway/AuthGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cloud-gateway/src/main/java/com/gugu/gateway/GatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-gateway/src/main/java/com/smilegate/authgateway/filter/GlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cloud-gateway/src/main/java/com/gugu/gateway/filter/GlobalFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth-gateway/src/test/java/com/smilegate/authgateway/AuthGatewayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cloud-gateway/src/test/java/com/smilegate/authgateway/AuthGatewayApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2JWpLO3WpwCDOTvrCyB2coq7F0H" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/blackbean/IdeaProjects/gugu&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9fdf6052-7c15-465d-928f-d8755c192e32" name="Changes" comment="" />
+      <created>1672203636792</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1672203636792</updated>
+      <workItem from="1672203639477" duration="296000" />
+      <workItem from="1673768164181" duration="36000" />
+      <workItem from="1673854659407" duration="627000" />
+      <workItem from="1673855292584" duration="336000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
