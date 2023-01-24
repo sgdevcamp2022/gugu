@@ -8,11 +8,10 @@ import { user } from './constant/user';
 import { notFound } from './constant/notFound';
 import Content from './Content';
 import SideBar from './SideBar';
+import FullScreenBox from '../layout/FullScreenBox';
 
-const Container = styled.div`
+const Box = styled(FullScreenBox)`
   display: flex;
-  width: 100vw;
-  height: 100vh;
 `;
 
 const settingSelector = (type) => {
@@ -30,10 +29,10 @@ const settingSelector = (type) => {
 
 function SettingContainer({ settingType }) {
   return (
-    <Container>
+    <Box>
       <SideBar settingTypes={settingSelector(settingType)} />
       <Content />
-    </Container>
+    </Box>
   );
 }
 
