@@ -5,7 +5,7 @@ import Server from './Server';
 const Box = styled.div`
   display: flex;
   align-items: center;
-  width: 90px;
+  width: 70px;
   flex-direction: column;
   background: #25272a;
 `;

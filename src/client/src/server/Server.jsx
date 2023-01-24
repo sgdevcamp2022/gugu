@@ -5,16 +5,16 @@ const Element = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   margin: 10px 0;
   background: #3a3c41;
-  border-radius: 70px;
+  border-radius: 50px;
   cursor: pointer;
   transition: ease-out 250ms;
   &:hover {
     background: #5c65ee;
-    border-radius: 20px;
+    border-radius: 15px;
     transition: ease-out 250ms;
   }
 `;
