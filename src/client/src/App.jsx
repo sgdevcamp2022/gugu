@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
 
-import SettingContainer from './setting/SettingContainer';
+import ServerContainer from './server/ServerContainer';
 
 function App() {
   return (
     <div className="App">
-      <SettingContainer settingType="server" />
+      <ServerContainer />
     </div>
   );
 }
