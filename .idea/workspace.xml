@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce52edb0-dfd3-4bf1-af6d-9f4156f5dbdb" name="Changes" comment="" />
+    <list default="true" id="ce52edb0-dfd3-4bf1-af6d-9f4156f5dbdb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/src/main/java/com/gugu/media/MediaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/src/main/java/com/gugu/media/MediaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/src/main/java/com/gugu/media/config/SignalingConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/src/main/java/com/gugu/media/config/SignalingConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/src/main/java/com/gugu/media/config/SignalingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/src/main/java/com/gugu/media/config/SignalingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/src/main/java/com/gugu/media/model/SignalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/src/main/java/com/gugu/media/model/SignalData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/src/main/java/com/gugu/media/model/SignalType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/src/main/java/com/gugu/media/model/SignalType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +40,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -37,24 +54,40 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2KOziaAanYKBQi7BXvmjGFsNDdo" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "corretto-17",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-17&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;43fc85ed36bcec1b096fd6ff719f52f0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.gugu.media.config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.gugu.media.model" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -66,7 +99,11 @@
       <workItem from="1673860547319" duration="710000" />
       <workItem from="1673957726942" duration="725000" />
       <workItem from="1674032642003" duration="10000" />
-      <workItem from="1674567748203" duration="404000" />
+      <workItem from="1674567748203" duration="7738000" />
+      <workItem from="1674624549642" duration="3694000" />
+      <workItem from="1674662068853" duration="1196000" />
+      <workItem from="1674733025938" duration="4072000" />
+      <workItem from="1674738520121" duration="225000" />
     </task>
     <servers />
   </component>

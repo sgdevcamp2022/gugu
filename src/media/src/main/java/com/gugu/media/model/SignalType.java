@@ -1,4 +1,10 @@
 package com.gugu.media.model;
 
-public class SignalData {
+public enum SignalType {
+    Login,
+    UserId,
+    Offer,
+    Answer,
+    Ice,
+    NewMember,
 }
