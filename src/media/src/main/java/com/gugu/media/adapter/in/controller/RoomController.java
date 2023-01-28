@@ -28,8 +28,7 @@ public class RoomController {
 
     @ResponseBody
     @GetMapping("/test")
-    public String test(){
-
+    public String test() {
         log.info("testing");
         return "testing";
     }
@@ -65,6 +64,21 @@ public class RoomController {
         data.put("signal", ob.get("signal"));
 
         return data;
+    }
+
+    // caller와 callee의 signaling을 위해 callee 정보를 쏴준다.
+    @MessageMapping("/video/callee-info")
+    @SendTo("/sub/video/callee-info")
+    private Map<String, Object> answerCall(JSONObject ob) {
+
+        log.info(ob.toJSONString());
+
+        // accepter의 정보를 소켓으로 쏴준다.
+        Map<String, Object> calleeInfo = new HashMap<>();
+        calleeInfo.put("signal", ob.get("signal"));
+        calleeInfo.put("from", ob.get("from"));
+        calleeInfo.put("to", ob.get("to"));
+        return calleeInfo;
     }
 
 
