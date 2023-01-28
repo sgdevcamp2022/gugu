@@ -1,13 +1,15 @@
 package com.gugu.media.adapter.in.controller;
 
-import com.gugu.media.utils.YamlPropertySourceFactory;
+//import com.gugu.media.utils.YamlPropertySourceFactory;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.event.EventListener;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.messaging.handler.annotation.Header;
@@ -21,21 +23,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.socket.messaging.SessionConnectEvent;
+import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
 @Slf4j
 @RestController
-@PropertySource(value = "classpath:document.yml",factory = YamlPropertySourceFactory.class)
-@ConfigurationProperties(prefix = "")
-//@ConfigurationProperties(location= {"document.yml"})
 @RequiredArgsConstructor
 public class RoomController {
 
     @Value("${ML_API_URL}")
-    private final String ML_API_URL;
+    private String ML_API_URL;
 
     // 테스트용 세션 리스트.
     private final ArrayList<TestSession> sessionIdList;
@@ -45,8 +46,8 @@ public class RoomController {
     @ResponseBody
     @GetMapping("/test")
     public String test() {
-        log.info("testing");
-        return "testing";
+        log.info(ML_API_URL);
+        return ML_API_URL;
     }
     @MessageMapping("/test")
     private String test(String sessionId) {
@@ -59,10 +60,8 @@ public class RoomController {
     @MessageMapping("/video/joined-room-info")
     @SendTo("/sub/video/joined-room-info")
     private ArrayList<TestSession> joinRoom(@Header("simpSessionId") String sessionId, JSONObject ob) {
-
         // 현재 들어온 세션 저장.
         sessionIdList.add(new TestSession((String) ob.get("from"), sessionId));
-
         return sessionIdList;
     }
 
@@ -114,6 +113,28 @@ public class RoomController {
         returnData.put("from", map.get("from"));
         returnData.put("resultOfAudioSentiment", jsonObj);
         return returnData;
+    }
+    @EventListener
+    private void handleSessionConnected(SessionConnectEvent event) {
+
+    }
+
+    @EventListener
+    private void handleSessionDisconnect(SessionDisconnectEvent event) {
+
+        String removedID = "";
+
+        // close된 세션의 id 저장.
+        for (TestSession session : sessionIdList) {
+            if (session.getSessionId().equals(event.getSessionId())) {
+                removedID = session.getId();
+                sessionIdList.remove(session);
+                break;
+            }
+        }
+        //종료 세션 id 전달.
+        template.convertAndSend("/sub/video/close-session", removedID);
+
     }
 
 }
