@@ -1,12 +1,21 @@
 package com.gugu.media.adapter.in.controller;
 
+import com.gugu.media.utils.YamlPropertySourceFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
@@ -15,11 +24,18 @@ import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.web.client.RestTemplate;
+
 @Slf4j
 @RestController
+@PropertySource(value = "classpath:document.yml",factory = YamlPropertySourceFactory.class)
+@ConfigurationProperties(prefix = "")
+//@ConfigurationProperties(location= {"document.yml"})
 @RequiredArgsConstructor
 public class RoomController {
 
+    @Value("${ML_API_URL}")
+    private final String ML_API_URL;
 
     // 테스트용 세션 리스트.
     private final ArrayList<TestSession> sessionIdList;
@@ -81,6 +97,23 @@ public class RoomController {
         return calleeInfo;
     }
 
+    @MessageMapping("/video/audio-sentiment")
+    @SendTo("/sub/video/audio-sentiment")
+    public Map<String, Object> getAudioSentiment(@RequestBody Map<String, String> map) throws ParseException {
 
+        HttpHeaders headers = new HttpHeaders();
+        RestTemplate restTemplate = new RestTemplate();
+        String resultMessage = restTemplate.postForObject(ML_API_URL + "/audio-sentiment", new HttpEntity<>(map, headers), String.class);
+
+        JSONParser parser = new JSONParser();
+        Object obj = parser.parse(resultMessage);
+        JSONObject jsonObj = (JSONObject) obj;
+
+        // {from : senderId, }
+        Map<String, Object> returnData = new HashMap<>();
+        returnData.put("from", map.get("from"));
+        returnData.put("resultOfAudioSentiment", jsonObj);
+        return returnData;
+    }
 
 }
