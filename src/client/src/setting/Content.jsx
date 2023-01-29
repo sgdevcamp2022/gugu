@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   flex: 1;
-  background-color: #3a3c41;
 `;
 
 const Heading3 = styled.div`
