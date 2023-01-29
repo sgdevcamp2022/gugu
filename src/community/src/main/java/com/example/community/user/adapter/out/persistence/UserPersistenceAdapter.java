@@ -15,4 +15,14 @@ public class UserPersistenceAdapter implements RecordUserStatePort {
     public void saveUser(User user) {
         userRepository.save(userMapper.mapToJpaEntity(user));
     }
+
+    @Override
+    public boolean checkEmailDuplicated(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public boolean checkUsernameDuplicated(String username) {
+        return userRepository.existsByUsername(username);
+    }
 }
