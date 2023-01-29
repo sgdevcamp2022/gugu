@@ -5,6 +5,7 @@ import com.example.community.user.application.port.in.SignUpCommand;
 import com.example.community.user.application.port.in.SignUpUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,12 +16,14 @@ import java.net.URI;
 @RequiredArgsConstructor
 public class UserController {
     private final SignUpUseCase signUpUseCase;
+    private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/user")
     public ResponseEntity<String> signUpUser(@RequestBody SignUpRequestDto signUpUser) {
+        String encodedPassword = passwordEncoder.encode(signUpUser.getPassword());
         SignUpCommand command = new SignUpCommand(
                 signUpUser.getEmail(),
-                signUpUser.getPassword(),
+                encodedPassword,
                 signUpUser.getUserName(),
                 signUpUser.getBirth());
 
