@@ -1,6 +1,9 @@
 package com.example.community.user.adapter.in.web;
 
+import com.example.community.user.adapter.out.persistence.SignInRequestDto;
 import com.example.community.user.adapter.out.persistence.SignUpRequestDto;
+import com.example.community.user.application.port.in.SignInCommand;
+import com.example.community.user.application.port.in.SignInUseCase;
 import com.example.community.user.application.port.in.SignUpCommand;
 import com.example.community.user.application.port.in.SignUpUseCase;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +19,7 @@ import java.net.URI;
 @RequiredArgsConstructor
 public class UserController {
     private final SignUpUseCase signUpUseCase;
+    private final SignInUseCase signInUseCase;
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/user")
@@ -33,5 +37,16 @@ public class UserController {
 
         return ResponseEntity.created(URI.create("/user"))
                 .body("회원가입을 성공했습니다.");
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> signInUser(@RequestBody SignInRequestDto signInUser) {
+        SignInCommand command = new SignInCommand(
+                signInUser.getEmail(),
+                signInUser.getPassword());
+        signInUseCase.signIn(command);
+
+        return ResponseEntity.ok()
+                .body("로그인을 성공했습니다.");
     }
 }
