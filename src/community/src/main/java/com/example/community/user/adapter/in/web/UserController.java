@@ -6,6 +6,8 @@ import com.example.community.user.application.port.in.SignInCommand;
 import com.example.community.user.application.port.in.SignInUseCase;
 import com.example.community.user.application.port.in.SignUpCommand;
 import com.example.community.user.application.port.in.SignUpUseCase;
+import com.example.community.util.JwtTokenProvider;
+import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,6 +23,7 @@ public class UserController {
     private final SignUpUseCase signUpUseCase;
     private final SignInUseCase signInUseCase;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @PostMapping("/user")
     public ResponseEntity<String> signUpUser(@RequestBody SignUpRequestDto signUpUser) {
@@ -40,13 +43,15 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> signInUser(@RequestBody SignInRequestDto signInUser) {
+    public ResponseEntity<TokenResponse> signInUser(@RequestBody SignInRequestDto signInUser) {
         SignInCommand command = new SignInCommand(
                 signInUser.getEmail(),
                 signInUser.getPassword());
         signInUseCase.signIn(command);
 
+        String token = jwtTokenProvider.createToken(signInUser.getEmail());
+
         return ResponseEntity.ok()
-                .body("로그인을 성공했습니다.");
+                .body(new TokenResponse(token, "bearer"));
     }
 }
