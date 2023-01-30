@@ -2,6 +2,7 @@ package com.example.community.user.application.service;
 
 import com.example.community.user.application.port.in.SignUpCommand;
 import com.example.community.user.application.port.in.SignUpUseCase;
+import com.example.community.user.application.port.out.LoadUserStatePort;
 import com.example.community.user.application.port.out.RecordUserStatePort;
 import com.example.community.user.domain.User;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class AccountSignUpService implements SignUpUseCase {
     private final RecordUserStatePort recordUserStatePort;
-    // TODO: 비밀번호 암호화
+    private final LoadUserStatePort loadUserStatePort;
 
     @Override
     public boolean signUp(SignUpCommand command) {
@@ -24,7 +25,7 @@ public class AccountSignUpService implements SignUpUseCase {
     @Override
     @Transactional(readOnly = true)
     public void checkUserNameDuplication(String username) {
-        boolean isNicknameDuplicated = recordUserStatePort.checkUsernameDuplicated(username);
+        boolean isNicknameDuplicated = loadUserStatePort.existByUsername(username);
         if (isNicknameDuplicated) {
             throw new IllegalArgumentException("이미 존재하는 닉네임입니다.");
         }
@@ -33,7 +34,7 @@ public class AccountSignUpService implements SignUpUseCase {
     @Override
     @Transactional(readOnly = true)
     public void checkEmailDuplication(String email) {
-        boolean isEmailDuplicated = recordUserStatePort.checkEmailDuplicated(email);
+        boolean isEmailDuplicated = loadUserStatePort.existByEmail(email);
         if (isEmailDuplicated) {
             throw new IllegalArgumentException("이미 존재하는 이메일입니다.");
         }

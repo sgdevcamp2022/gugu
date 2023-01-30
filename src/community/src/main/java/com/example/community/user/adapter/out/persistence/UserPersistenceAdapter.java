@@ -1,5 +1,6 @@
 package com.example.community.user.adapter.out.persistence;
 
+import com.example.community.user.application.port.out.LoadUserStatePort;
 import com.example.community.user.application.port.out.RecordUserStatePort;
 import com.example.community.user.domain.User;
 import lombok.RequiredArgsConstructor;
@@ -7,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class UserPersistenceAdapter implements RecordUserStatePort {
+public class UserPersistenceAdapter implements RecordUserStatePort, LoadUserStatePort {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
@@ -17,12 +18,12 @@ public class UserPersistenceAdapter implements RecordUserStatePort {
     }
 
     @Override
-    public boolean checkEmailDuplicated(String email) {
+    public boolean existByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
 
     @Override
-    public boolean checkUsernameDuplicated(String username) {
+    public boolean existByUsername(String username) {
         return userRepository.existsByUsername(username);
     }
 }
