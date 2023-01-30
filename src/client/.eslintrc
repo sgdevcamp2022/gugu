@@ -1,0 +1,12 @@
+{
+  "root": true,
+  "plugins": ["eslint-plugin-react"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser"
+  // "rules": {}
+}
