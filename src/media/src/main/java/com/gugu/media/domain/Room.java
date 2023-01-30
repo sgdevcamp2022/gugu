@@ -3,9 +3,7 @@ package com.gugu.media.domain;
 import org.springframework.web.socket.WebSocketSession;
 
 import javax.validation.constraints.NotNull;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class Room {
     @NotNull
@@ -21,7 +19,7 @@ public class Room {
         return id;
     }
 
-    Map<String, WebSocketSession> getClients() {
+    public Map<String, WebSocketSession> getClients() {
         return clients;
     }
 
@@ -36,7 +34,8 @@ public class Room {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(getId(), getClients());
     }
+
+
 }

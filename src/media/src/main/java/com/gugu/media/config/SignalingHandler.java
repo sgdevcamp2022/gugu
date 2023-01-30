@@ -1,11 +1,17 @@
 package com.gugu.media.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.gugu.media.application.service.RoomService;
 import com.gugu.media.domain.Room;
 import com.gugu.media.domain.WebSocketMessage;
+import com.gugu.media.model.SignalData;
+import com.gugu.media.model.SignalType;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -13,10 +19,14 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 import java.io.IOException;
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+
 
 @Slf4j
+@Component
 public class SignalingHandler extends TextWebSocketHandler {
+    private static final String ERROR_MESSAGE = "[Handler] Error : ";
+    @Autowired private RoomService roomService;
+
     List<WebSocketSession> sessions = new LinkedList<WebSocketSession>();
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final ObjectMapper objectMapper = new ObjectMapper();
@@ -49,18 +59,17 @@ public class SignalingHandler extends TextWebSocketHandler {
         String data = message.getData(); // payload
 
         Room room;
+
         switch (message.getType()) {
-            // text message from client has been received
             case MSG_TYPE_TEXT:
                 logger.debug("[ws] Text message: {}", message.getData());
-                // message.data is the text sent by client
-                // process text message if needed
                 break;
-
-            // process signal received from client
             case MSG_TYPE_OFFER:
-
+                log.info(message.toString());
+                sendMessage(session,message);
             case MSG_TYPE_ANSWER:
+                log.info(message.toString());
+                sendMessage(session,message);
 
             case MSG_TYPE_ICE:
                 Object candidate = message.getCandidate();
@@ -76,7 +85,6 @@ public class SignalingHandler extends TextWebSocketHandler {
                     for(Map.Entry<String, WebSocketSession> client : clients.entrySet())  {
                         // send messages to all clients except current user
                         if (!client.getKey().equals(userName)) {
-                            // select the same type to resend signal
                             sendMessage(client.getValue(),
                                     new WebSocketMessage(
                                             userName,
@@ -128,5 +136,14 @@ public class SignalingHandler extends TextWebSocketHandler {
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         sessions.remove(session);
         super.afterConnectionClosed(session, status);
+    }
+
+    private void sendMessage(WebSocketSession session, WebSocketMessage message) {
+        try {
+            String json = objectMapper.writeValueAsString(message);
+            session.sendMessage(new TextMessage(json));
+        } catch (IOException e) {
+            logger.debug("An error occured: {}", e.getMessage());
+        }
     }
 }
