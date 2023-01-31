@@ -77,7 +77,7 @@ function MemberInfoContainer({ src, name, id, roleArray }) {
         ))}
         <AddRoleButton />
       </RoleContainer>
-      <MemberManageBtn isInfoHover={isInfoHover} />
+      <MemberManageBtn isInfoHover={isInfoHover} name={name} />
     </Container>
   );
 }
