@@ -38,3 +38,9 @@ out/
 .vscode/
 
 .src/main/resources/application.yml
+/.idea/gugu.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
