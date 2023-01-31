@@ -6,10 +6,11 @@ import { server } from './constant/server';
 import { channel } from './constant/channel';
 import { user } from './constant/user';
 import { notFound } from './constant/notFound';
-import Content from './Content';
+// import Content from './Content';
 import SideBar from './SideBar';
 import FullScreenBox from '../layout/FullScreenBox';
 import SettingCloseButton from './SettingCloseButton';
+import ServerMemberContainer from './server-member/ServerMemberContainer';
 
 const Box = styled(FullScreenBox)`
   display: flex;
@@ -23,7 +24,7 @@ const ContentContainer = styled.div`
   display: grid;
   grid-template-columns: auto 60px;
   
-  background-color: #3a3c41;
+  background-color: ${props => props.theme.color.primaryBg};
 `;
 
 const settingSelector = (type) => {
@@ -44,7 +45,7 @@ function SettingContainer({ settingType }) {
     <Box>
       <SideBar settingTypes={settingSelector(settingType)} />
       <ContentContainer>
-        <Content />
+        <ServerMemberContainer />
         <SettingCloseButton />
       </ContentContainer>
     </Box>

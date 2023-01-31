@@ -8,7 +8,7 @@ const Box = styled.div`
   justify-content: flex-start;
   align-items: center;
   
-  color: #939599;
+  color: ${props => props.theme.color.secondaryText};
 `;
 
 const Button = styled(SlClose)`
