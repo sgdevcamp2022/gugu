@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { HiChevronDown } from 'react-icons/hi';
 import { AiFillCheckCircle } from 'react-icons/ai';
-import useOutSideClick from '../../../hooks/useOutSideClick';
+import useOutsideClick from '../../../hooks/useOutsideClick';
 import SearchBar from '../../../layout/SearchBar';
 
 const Container = styled.div`
@@ -92,7 +92,7 @@ function NavBar() {
     { name: '백엔드', color: 'orange' },
   ];
 
-  useOutSideClick(roleModalRef, () => {
+  useOutsideClick(roleModalRef, () => {
     setIsRoleModalOpen(false);
   });
 

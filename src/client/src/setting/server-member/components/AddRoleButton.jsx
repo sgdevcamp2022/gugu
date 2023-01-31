@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { IoMdAdd } from 'react-icons/io';
 import styled from 'styled-components';
 import SearchBar from '../../../layout/SearchBar';
-import useOutSideClick from '../../../hooks/useOutSideClick';
+import useOutsideClick from '../../../hooks/useOutsideClick';
 
 const Container = styled.div`
   width: 14px;
@@ -76,7 +76,7 @@ function AddRoleButton() {
     { name: '백엔드', color: 'orange' },
   ];
 
-  useOutSideClick(roleModalRef, () => {
+  useOutsideClick(roleModalRef, () => {
     setIsRoleModalOpen(false);
   });
 

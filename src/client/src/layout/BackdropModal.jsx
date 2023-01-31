@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Backdrop } from '@mui/material';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
-import useOutSideClick from '../hooks/useOutSideClick';
+import useOutsideClick from '../hooks/useOutsideClick';
 
 const ModalSection = styled.div`
   position: relative;
@@ -15,7 +15,7 @@ const ModalSection = styled.div`
 function BackdropModal({ open, setOpen, children, sx }) {
   const modalRef = useRef();
 
-  useOutSideClick(modalRef, () => {
+  useOutsideClick(modalRef, () => {
     setOpen(false);
   });
 

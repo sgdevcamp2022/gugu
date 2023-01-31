@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { AiOutlineMore } from 'react-icons/ai';
 import styled, { css } from 'styled-components';
 import { PropTypes } from 'prop-types';
-import useOutSideClick from '../../../hooks/useOutSideClick';
+import useOutsideClick from '../../../hooks/useOutsideClick';
 import BackdropModal from '../../../layout/BackdropModal';
 
 const Container = styled.div`
@@ -117,7 +117,7 @@ function MemberManageBtn({ isInfoHover, name }) {
   const [isThrowModalOpen, setIsThrowModalOpen] = useState(false);
   const [isBlockModalOpen, setIsBlockModalOpen] = useState(false);
 
-  useOutSideClick(manageModalRef, () => {
+  useOutsideClick(manageModalRef, () => {
     setIsManageModalOpen(false);
   });
 
