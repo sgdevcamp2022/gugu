@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components'
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import './App.css';
 
 // import ServerContainer from './server/ServerContainer';
@@ -19,7 +19,7 @@ function App() {
     <StyledThemeProvider theme={Theme}>
       <AppRouter />
     </StyledThemeProvider>
-  )
+  );
 }
 
 export default App;
