@@ -19,7 +19,6 @@ const Box = styled(FullScreenBox)`
 
 const ContentContainer = styled.div`
   width: 80%;
-  height: 100%;
   padding: 60px 40px;
   max-width: 660px;
 
