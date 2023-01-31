@@ -2,18 +2,16 @@ package com.example.community.user.adapter.in.web;
 
 import com.example.community.user.adapter.out.persistence.SignInRequestDto;
 import com.example.community.user.adapter.out.persistence.SignUpRequestDto;
+import com.example.community.user.adapter.out.persistence.TokenResponse;
 import com.example.community.user.application.port.in.SignInCommand;
 import com.example.community.user.application.port.in.SignInUseCase;
 import com.example.community.user.application.port.in.SignUpCommand;
 import com.example.community.user.application.port.in.SignUpUseCase;
 import com.example.community.util.JwtTokenProvider;
-import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
