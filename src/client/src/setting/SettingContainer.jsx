@@ -14,17 +14,17 @@ import ServerMemberContainer from './server-member/ServerMemberContainer';
 
 const Box = styled(FullScreenBox)`
   display: flex;
+  background-color: ${(props) => props.theme.color.primaryBg};
 `;
 
 const ContentContainer = styled.div`
   width: 80%;
   height: 100%;
   padding: 60px 40px;
-  
+  max-width: 660px;
+
   display: grid;
-  grid-template-columns: auto 60px;
-  
-  background-color: ${props => props.theme.color.primaryBg};
+  grid-template-columns: auto 80px;
 `;
 
 const settingSelector = (type) => {
