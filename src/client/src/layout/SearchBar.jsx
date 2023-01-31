@@ -8,12 +8,12 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  background-color: #202225;
+  background-color: ${(props) => props.theme.color.inputBg};
   border-radius: 3px;
 `;
 
 const Input = styled.input`
-  background-color: #202225;
+  background-color: ${(props) => props.theme.color.inputBg};
 
   font-size: 1em;
   border-radius: 3px;
