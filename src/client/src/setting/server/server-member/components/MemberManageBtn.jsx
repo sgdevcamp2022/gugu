@@ -2,8 +2,8 @@ import React, { useRef, useState } from 'react';
 import { AiOutlineMore } from 'react-icons/ai';
 import styled, { css } from 'styled-components';
 import { PropTypes } from 'prop-types';
-import useOutsideClick from '../../../hooks/useOutsideClick';
-import BackdropModal from '../../../common/components/BackdropModal';
+import useOutsideClick from '../../../../hooks/useOutsideClick';
+import BackdropModal from '../../../../common/components/BackdropModal';
 
 const Container = styled.div`
   margin-top: 5px;

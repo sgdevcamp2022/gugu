@@ -10,7 +10,7 @@ import { notFound } from './constant/notFound';
 import SideBar from './SideBar';
 import FullScreenBox from '../layout/FullScreenBox';
 import SettingCloseButton from './SettingCloseButton';
-import ServerMemberContainer from './server-member/ServerMemberContainer';
+import ServerMemberContainer from './server/server-member/ServerMemberContainer';
 
 const Box = styled(FullScreenBox)`
   display: flex;
