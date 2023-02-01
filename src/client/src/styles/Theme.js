@@ -1,14 +1,15 @@
 const Theme = {
   color: {
-    primaryBg: '#3a3c41',
-    secondaryBg: '#333439',
-    activeBg: '#2E3136',
+    primaryBg: '#36393F',
+    secondaryBg: '#2F3136',
 
     primaryText: '#ffffff',
     secondaryText: '#B9BBBE',
 
     red: '#ED4245',
-    blue: '#4751C4',
+    darkRed: '#A12D2F',
+    blue: '#5865F2',
+    darkBlue: '#4745c4',
 
     border: 'rgba(184, 186, 189, 0.25)',
 

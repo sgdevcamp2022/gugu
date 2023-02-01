@@ -90,7 +90,7 @@ function AddRoleButton() {
       {isRoleModalOpen && (
         <RoleModal ref={roleModalRef}>
           <SearchBar
-            sx={{ margin: '1px', padding: '8px' }}
+            inputStyle={{ margin: '1px', padding: '8px' }}
             fontSize="16px"
             placeholder="역할"
           />

@@ -108,6 +108,10 @@ const ModalLayout = styled.div`
 
   .submit {
     background-color: ${(props) => props.theme.color.red};
+
+    &:hover {
+      background-color: ${(props) => props.theme.color.darkRed};
+    }
   }
 `;
 

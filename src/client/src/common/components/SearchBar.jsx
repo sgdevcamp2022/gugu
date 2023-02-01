@@ -4,8 +4,8 @@ import { IoSearch } from 'react-icons/io5';
 import { PropTypes } from 'prop-types';
 
 const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
 
   background-color: ${(props) => props.theme.color.inputBg};
@@ -32,23 +32,25 @@ const Icon = styled(IoSearch)`
   color: ${(props) => props.theme.color.secondaryText};
 `;
 
-function SearchBar({ sx, fontSize, placeholder }) {
+function SearchBar({ containerStyle, inputStyle, fontSize, placeholder }) {
   return (
-    <Container style={{ fontSize }}>
-      <Input style={sx} placeholder={placeholder} />
+    <Container style={{ fontSize, ...containerStyle }}>
+      <Input style={inputStyle} placeholder={placeholder} />
       <Icon />
     </Container>
   );
 }
 
 SearchBar.propTypes = {
-  sx: PropTypes.objectOf,
+  containerStyle: PropTypes.objectOf,
+  inputStyle: PropTypes.objectOf,
   fontSize: PropTypes.string,
   placeholder: PropTypes.string,
 };
 
 SearchBar.defaultProps = {
-  sx: {},
+  containerStyle: {},
+  inputStyle: {},
   fontSize: '14px',
   placeholder: '',
 };

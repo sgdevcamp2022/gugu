@@ -111,7 +111,7 @@ function NavBar() {
           {isRoleModalOpen && (
             <RoleModal ref={roleModalRef}>
               <SearchBar
-                sx={{ margin: '1px', padding: '8px' }}
+                inputStyle={{ margin: '1px', padding: '8px' }}
                 fontSize="16px"
                 placeholder="역할 검색"
               />
@@ -127,7 +127,7 @@ function NavBar() {
           )}
         </RoleBox>
         <SearchBar
-          sx={{ margin: '1px', padding: '4px' }}
+          inputStyle={{ margin: '1px', padding: '4px' }}
           fontSize="14px"
           placeholder="검색하기"
         />
