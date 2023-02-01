@@ -7,7 +7,7 @@ import SearchBar from '../../../../common/components/SearchBar';
 
 const Container = styled.div`
   width: 100%;
-  margin: 30px 0;
+  margin-bottom: 30px;
 
   display: flex;
   justify-content: space-between;

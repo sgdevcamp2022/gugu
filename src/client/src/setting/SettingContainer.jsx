@@ -6,7 +6,7 @@ import { server } from './constant/server';
 import { channel } from './constant/channel';
 import { user } from './constant/user';
 import { notFound } from './constant/notFound';
-// import Content from './Content';
+
 import SideBar from './SideBar';
 import FullScreenBox from '../layout/FullScreenBox';
 import SettingCloseButton from './SettingCloseButton';

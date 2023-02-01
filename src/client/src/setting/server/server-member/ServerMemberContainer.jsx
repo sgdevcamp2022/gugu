@@ -2,16 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import NavBar from './components/NavBar';
 import MemberInfoContainer from './components/MemberInfoContainer';
-
-const Container = styled.div`
-  flex: 1;
-`;
-
-const Heading3 = styled.div`
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: ${(props) => props.theme.color.primaryText};
-`;
+import Heading3 from '../../common/components/Heading3';
+import Content from '../../common/components/Content';
 
 const Divider = styled.div`
   margin-top: 20px;
@@ -47,7 +39,7 @@ function ServerMemberContainer() {
   ];
 
   return (
-    <Container>
+    <Content>
       <Heading3>서버 멤버</Heading3>
       <NavBar />
       <Divider />
@@ -60,7 +52,7 @@ function ServerMemberContainer() {
           roleArray={info.roleArray}
         />
       ))}
-    </Container>
+    </Content>
   );
 }
 
