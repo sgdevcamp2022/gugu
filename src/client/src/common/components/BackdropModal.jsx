@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Backdrop } from '@mui/material';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
-import useOutsideClick from '../hooks/useOutsideClick';
+import useOutsideClick from '../../hooks/useOutsideClick';
 
 const ModalSection = styled.div`
   position: relative;

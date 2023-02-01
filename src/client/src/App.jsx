@@ -1,6 +1,5 @@
 import React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import './App.css';
 
 // import ServerContainer from './server/ServerContainer';
 import SettingContainer from './setting/SettingContainer';

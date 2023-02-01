@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { IoMdAdd } from 'react-icons/io';
 import styled from 'styled-components';
-import SearchBar from '../../../layout/SearchBar';
+import SearchBar from '../../../common/components/SearchBar';
 import useOutsideClick from '../../../hooks/useOutsideClick';
 
 const Container = styled.div`

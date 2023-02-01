@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { HiChevronDown } from 'react-icons/hi';
 import { AiFillCheckCircle } from 'react-icons/ai';
 import useOutsideClick from '../../../hooks/useOutsideClick';
-import SearchBar from '../../../layout/SearchBar';
+import SearchBar from '../../../common/components/SearchBar';
 
 const Container = styled.div`
   width: 100%;
