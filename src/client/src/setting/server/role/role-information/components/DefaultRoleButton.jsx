@@ -16,6 +16,8 @@ const Container = styled.div`
 
   color: ${(props) => props.theme.color.secondaryText};
 
+  cursor: pointer;
+
   &:hover {
     background-color: rgba(79, 84, 92, 0.4);
   }

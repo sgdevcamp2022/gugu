@@ -2,6 +2,7 @@ const Theme = {
   color: {
     primaryBg: '#36393F',
     secondaryBg: '#2F3136',
+    hoverBg: '#4F545C66',
 
     primaryText: '#ffffff',
     secondaryText: '#B9BBBE',
@@ -9,7 +10,7 @@ const Theme = {
     red: '#ED4245',
     darkRed: '#A12D2F',
     blue: '#5865F2',
-    darkBlue: '#4745c4',
+    darkBlue: '#4745C4',
 
     border: 'rgba(184, 186, 189, 0.25)',
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 import isRoleSettingModeState from '../../../recoil/setting/atom/isRoleSettingModeState';
 
-import RoleInfoContainer from './role-info/RoleInfoContainer';
+import RoleInfoContainer from './role-information/RoleInfoContainer';
 
 function ServerRoleContainer() {
   const isRoleSettingMode = useRecoilValue(isRoleSettingModeState);

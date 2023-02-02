@@ -20,7 +20,7 @@ const Box = styled(FullScreenBox)`
 const ContentContainer = styled.div`
   width: 80%;
   padding: 60px 40px;
-  max-width: 660px;
+  max-width: 740px;
 
   display: grid;
   grid-template-columns: auto 80px;

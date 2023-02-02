@@ -42,8 +42,8 @@ function SearchBar({ containerStyle, inputStyle, fontSize, placeholder }) {
 }
 
 SearchBar.propTypes = {
-  containerStyle: PropTypes.objectOf,
-  inputStyle: PropTypes.objectOf,
+  containerStyle: PropTypes.objectOf(PropTypes.string),
+  inputStyle: PropTypes.objectOf(PropTypes.string),
   fontSize: PropTypes.string,
   placeholder: PropTypes.string,
 };
