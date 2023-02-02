@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
 import isRoleSettingModeState from '../recoil/atom/isRoleSettingModeState';
 
 import RoleInfoContainer from './role-information/RoleInfoContainer';
@@ -9,6 +9,7 @@ import roleListState from '../recoil/atom/roleListState';
 function ServerRoleContainer() {
   const isRoleSettingMode = useRecoilValue(isRoleSettingModeState);
   const setRoleList = useSetRecoilState(roleListState);
+  const resetIsRoleSettingMode = useResetRecoilState(isRoleSettingModeState);
 
   const roleList = [
     { id: '1', name: '프론트엔드', color: 'green', numMember: 2 },
@@ -16,6 +17,7 @@ function ServerRoleContainer() {
   ];
 
   useEffect(() => {
+    resetIsRoleSettingMode();
     setRoleList(roleList);
   }, []);
 
@@ -23,7 +25,7 @@ function ServerRoleContainer() {
     return <RoleInfoContainer />;
   }
 
-  return <RoleSettingContainer roleList={roleList} />;
+  return <RoleSettingContainer />;
 }
 
 export default ServerRoleContainer;

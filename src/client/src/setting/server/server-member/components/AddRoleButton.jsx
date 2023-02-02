@@ -55,7 +55,8 @@ const Role = styled.div`
   border-radius: 3px;
 
   &:hover {
-    background-color: ${(props) => props.theme.color.inputHoverBg};
+    background-color: ${(props) => props.theme.color.hoverBg};
+    color: ${(props) => props.theme.color.primaryText};
   }
 
   div {

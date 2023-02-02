@@ -1,22 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import { useSetRecoilState } from 'recoil';
-import {
-  RiShieldUserFill,
-  RiPencilFill,
-  RiMoreFill,
-  RiDeleteBin6Fill,
-} from 'react-icons/ri';
+import { RiShieldUserFill, RiPencilFill, RiMoreFill } from 'react-icons/ri';
 import { BsPersonFill } from 'react-icons/bs';
 
-import {
-  DarkModalButton,
-  DarkModalContainer,
-} from '../../../../../layout/DarkModal';
-import useOutsideClick from '../../../../../hooks/useOutsideClick';
 import isRoleSettingModeState from '../../../recoil/atom/isRoleSettingModeState';
 import selectedRoleState from '../../../recoil/atom/selectedRoleState';
+import RoleDeleteBtn from '../../common/components/RoleDeleteBtn';
 
 const Container = styled.div`
   height: 60px;
@@ -115,10 +106,6 @@ const Button = styled.div`
   border-radius: 1000px;
   cursor: pointer;
 
-  &:hover {
-    color: ${(props) => props.theme.color.primaryText};
-  }
-
   &.edit-button {
     visibility: hidden;
   }
@@ -127,40 +114,21 @@ const Button = styled.div`
 const ButtonIcon = styled.div`
   width: 100%;
   height: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
-`;
 
-const DarkModal = styled(DarkModalContainer)`
-  position: relative;
-  z-index: 1;
-  bottom: 50%;
-  right: 180px;
-`;
+  border-radius: 1000px;
 
-const DeleteHolder = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  .delete-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
+  &:hover {
+    color: ${(props) => props.theme.color.primaryText};
   }
 `;
 
 function RoleInfo({ id, color, name, numMember }) {
-  const moreModalRef = useRef();
-  const [isMoreModalOpen, setIsMoreModalOpen] = useState(false);
   const setIsRoleSettingMode = useSetRecoilState(isRoleSettingModeState);
   const setSelectedRole = useSetRecoilState(selectedRoleState);
-
-  useOutsideClick(moreModalRef, () => {
-    setIsMoreModalOpen(false);
-  });
 
   return (
     <Container>
@@ -204,24 +172,14 @@ function RoleInfo({ id, color, name, numMember }) {
         <Button
           className="more-button button"
           onClick={() => {
-            setIsMoreModalOpen(true);
+            setSelectedRole({ id, name });
           }}
         >
-          <ButtonIcon>
-            <RiMoreFill />
-          </ButtonIcon>
-          {isMoreModalOpen && (
-            <DarkModal ref={moreModalRef}>
-              <DarkModalButton strict>
-                <DeleteHolder>
-                  <p>삭제</p>
-                  <div className="delete-icon">
-                    <RiDeleteBin6Fill />
-                  </div>
-                </DeleteHolder>
-              </DarkModalButton>
-            </DarkModal>
-          )}
+          <RoleDeleteBtn>
+            <ButtonIcon>
+              <RiMoreFill />
+            </ButtonIcon>
+          </RoleDeleteBtn>
         </Button>
       </ButtonContainer>
     </Container>

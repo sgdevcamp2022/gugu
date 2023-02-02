@@ -35,7 +35,7 @@ const DarkModal = styled(DarkModalContainer)`
 `;
 
 const ModalLayout = styled.div`
-  width: 440px;
+  width: 100%;
 
   .title {
     padding: 16px;
@@ -144,7 +144,7 @@ function MemberMoreBtn({ isInfoHover, name }) {
               </ModalLayout>
             </BackdropModal>
           </DarkModalButton>
-          <DarkModalButton>
+          <DarkModalButton strict>
             <p
               role="presentation"
               onClick={() => {
