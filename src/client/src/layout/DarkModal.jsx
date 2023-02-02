@@ -15,6 +15,7 @@ export const DarkModalButton = styled.div`
   padding: 6px 8px;
 
   font-size: 14px;
+  font-weight: 500;
   color: ${(props) => props.theme.color.secondaryText};
 
   border-radius: 3px;

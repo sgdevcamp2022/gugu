@@ -2,6 +2,10 @@ import React from 'react';
 import { BsFillPeopleFill } from 'react-icons/bs';
 import { BiChevronRight } from 'react-icons/bi';
 import styled from 'styled-components';
+import { useSetRecoilState } from 'recoil';
+import isRoleSettingModeState from '../../../recoil/atom/isRoleSettingModeState';
+import selectedRoleState from '../../../recoil/atom/selectedRoleState';
+import EVERYONE from '../../../../constant/EVERYONE';
 
 const Container = styled.div`
   height: 40px;
@@ -9,7 +13,7 @@ const Container = styled.div`
 
   display: grid;
   align-items: center;
-  grid-template-columns: 32px 1fr 1fr;
+  grid-template-columns: 32px 3fr 1fr;
 
   background-color: ${(props) => props.theme.color.secondaryBg};
   border-radius: 3px;
@@ -20,6 +24,7 @@ const Container = styled.div`
 
   &:hover {
     background-color: rgba(79, 84, 92, 0.4);
+    color: ${(props) => props.theme.color.primaryText};
   }
 `;
 
@@ -38,6 +43,7 @@ const PeopleIconHolder = styled.div`
 `;
 
 const TextBox = styled.div`
+  width: auto;
   margin-left: 16px;
 
   div {
@@ -60,8 +66,16 @@ const ChevronHolder = styled.div`
 `;
 
 function DefaultRoleButton() {
+  const setIsRoleSettingMode = useSetRecoilState(isRoleSettingModeState);
+  const setSelectedRoleState = useSetRecoilState(selectedRoleState);
+
   return (
-    <Container>
+    <Container
+      onClick={() => {
+        setIsRoleSettingMode(true);
+        setSelectedRoleState({ id: EVERYONE.ID, name: EVERYONE.NAME });
+      }}
+    >
       <PeopleIconHolder>
         <BsFillPeopleFill />
       </PeopleIconHolder>

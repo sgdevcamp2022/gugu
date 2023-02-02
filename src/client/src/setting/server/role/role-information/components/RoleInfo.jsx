@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
+import { useSetRecoilState } from 'recoil';
 import {
   RiShieldUserFill,
   RiPencilFill,
@@ -8,11 +9,14 @@ import {
   RiDeleteBin6Fill,
 } from 'react-icons/ri';
 import { BsPersonFill } from 'react-icons/bs';
+
 import {
   DarkModalButton,
   DarkModalContainer,
 } from '../../../../../layout/DarkModal';
 import useOutsideClick from '../../../../../hooks/useOutsideClick';
+import isRoleSettingModeState from '../../../recoil/atom/isRoleSettingModeState';
+import selectedRoleState from '../../../recoil/atom/selectedRoleState';
 
 const Container = styled.div`
   height: 60px;
@@ -23,8 +27,6 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 5fr 112px 4fr;
   align-items: center;
-
-  cursor: pointer;
 
   &:hover {
     background-color: ${(props) => props.theme.color.hoverBg};
@@ -37,6 +39,7 @@ const Container = styled.div`
 `;
 
 const Role = styled.div`
+  height: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -110,6 +113,7 @@ const Button = styled.div`
   font-size: 20px;
 
   border-radius: 1000px;
+  cursor: pointer;
 
   &:hover {
     color: ${(props) => props.theme.color.primaryText};
@@ -148,23 +152,36 @@ const DeleteHolder = styled.div`
   }
 `;
 
-function RoleInfo({ color, name, numMember }) {
+function RoleInfo({ id, color, name, numMember }) {
   const moreModalRef = useRef();
   const [isMoreModalOpen, setIsMoreModalOpen] = useState(false);
+  const setIsRoleSettingMode = useSetRecoilState(isRoleSettingModeState);
+  const setSelectedRole = useSetRecoilState(selectedRoleState);
 
   useOutsideClick(moreModalRef, () => {
     setIsMoreModalOpen(false);
   });
+
   return (
     <Container>
-      <Role>
+      <Role
+        onClick={() => {
+          setIsRoleSettingMode(true);
+          setSelectedRole({ id, name });
+        }}
+      >
         <RoleIconHolder style={{ color }}>
           <RiShieldUserFill />
         </RoleIconHolder>
         <RoleName>{name}</RoleName>
       </Role>
 
-      <NumMember>
+      <NumMember
+        onClick={() => {
+          setIsRoleSettingMode(true);
+          setSelectedRole({ id, name });
+        }}
+      >
         <div className="text">{numMember}</div>
         <NumMemberIconHolder>
           <BsPersonFill />
@@ -172,7 +189,13 @@ function RoleInfo({ color, name, numMember }) {
       </NumMember>
 
       <ButtonContainer>
-        <Button className="edit-button button">
+        <Button
+          className="edit-button button"
+          onClick={() => {
+            setIsRoleSettingMode(true);
+            setSelectedRole({ id, name });
+          }}
+        >
           <ButtonIcon>
             <RiPencilFill />
           </ButtonIcon>
@@ -206,12 +229,14 @@ function RoleInfo({ color, name, numMember }) {
 }
 
 RoleInfo.propTypes = {
+  id: PropTypes.string,
   color: PropTypes.string,
   name: PropTypes.string,
   numMember: PropTypes.number,
 };
 
 RoleInfo.defaultProps = {
+  id: '',
   color: '#B9BBBE',
   name: '',
   numMember: 0,
