@@ -8,6 +8,8 @@ import { BsPersonFill } from 'react-icons/bs';
 import isRoleSettingModeState from '../../../recoil/atom/isRoleSettingModeState';
 import selectedRoleState from '../../../recoil/atom/selectedRoleState';
 import RoleDeleteBtn from '../../common/components/RoleDeleteBtn';
+import roleSettingTypeState from '../../../recoil/atom/roleSettingTypeState';
+import ROLE_SETTING_TYPES from '../../../../constant/ROLE_SETTING_TYPES';
 
 const Container = styled.div`
   height: 60px;
@@ -129,6 +131,7 @@ const ButtonIcon = styled.div`
 function RoleInfo({ id, color, name, numMember }) {
   const setIsRoleSettingMode = useSetRecoilState(isRoleSettingModeState);
   const setSelectedRole = useSetRecoilState(selectedRoleState);
+  const setRoleSettingType = useSetRecoilState(roleSettingTypeState);
 
   return (
     <Container>
@@ -136,6 +139,7 @@ function RoleInfo({ id, color, name, numMember }) {
         onClick={() => {
           setIsRoleSettingMode(true);
           setSelectedRole({ id, name });
+          setRoleSettingType(ROLE_SETTING_TYPES.DISPLAY);
         }}
       >
         <RoleIconHolder style={{ color }}>
@@ -148,6 +152,7 @@ function RoleInfo({ id, color, name, numMember }) {
         onClick={() => {
           setIsRoleSettingMode(true);
           setSelectedRole({ id, name });
+          setRoleSettingType(ROLE_SETTING_TYPES.MEMBERS);
         }}
       >
         <div className="text">{numMember}</div>
@@ -162,6 +167,7 @@ function RoleInfo({ id, color, name, numMember }) {
           onClick={() => {
             setIsRoleSettingMode(true);
             setSelectedRole({ id, name });
+            setRoleSettingType(ROLE_SETTING_TYPES.DISPLAY);
           }}
         >
           <ButtonIcon>

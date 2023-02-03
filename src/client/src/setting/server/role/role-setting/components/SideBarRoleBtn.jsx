@@ -6,7 +6,7 @@ import selectedRoleState from '../../../recoil/atom/selectedRoleState';
 
 const RoleButton = styled.div`
   height: 22px;
-  margin-right: 16px;
+  margin: 0 16px 2px 0;
   padding: 6px 10px;
   color: ${(props) => props.theme.color.primaryText};
 
@@ -20,8 +20,12 @@ const RoleButton = styled.div`
   ${(props) =>
     props.selected &&
     css`
-      background-color: #4f545c99;
+      background-color: ${props.theme.color.selectedBg};
     `}
+
+  &:hover {
+    background-color: ${(props) => props.theme.color.hoverBg};
+  }
 
   .name {
     font-size: 14px;
