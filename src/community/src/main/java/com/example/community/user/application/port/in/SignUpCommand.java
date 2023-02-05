@@ -6,7 +6,6 @@ import lombok.Getter;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-
 @Getter
 public class SignUpCommand extends SelfValidating<SignUpCommand> {
 
