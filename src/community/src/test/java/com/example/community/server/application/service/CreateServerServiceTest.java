@@ -13,7 +13,7 @@ class CreateServerServiceTest {
 
     @Test
     void isTrueServerIsCreatedByProperServerName() {
-        CreateServerCommand command = new CreateServerCommand("TestServer");
+        CreateServerCommand command = new CreateServerCommand("TestServer", "");
         boolean success = createServerService.createServer(command);
 
         assertThat(success).isTrue();
