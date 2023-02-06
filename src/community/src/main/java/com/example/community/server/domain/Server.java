@@ -16,8 +16,8 @@ public class Server {
     private String serverName;
     private String serverImage;
 
-    public Server(String serverName) {
+    public Server(String serverName, String serverImage) {
         this.serverName = serverName;
-        this.serverImage = "";
+        this.serverImage = serverImage;
     }
 }

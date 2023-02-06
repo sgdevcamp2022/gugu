@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class ServerMapper {
     ServerJpaEntity mapToJpaEntity(Server server) {
-        return new ServerJpaEntity(server.getServerName());
+        return new ServerJpaEntity(server.getServerName(), server.getServerImage());
     }
 }

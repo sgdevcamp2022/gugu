@@ -14,7 +14,7 @@ public class CreateServerService implements CreateServerUserCase {
 
     @Override
     public boolean createServer(CreateServerCommand command) {
-        Server server = new Server(command.getServerName());
+        Server server = new Server(command.getServerName(), command.getImage());
         recordServerStatePort.saveServer(server);
         return true;
     }

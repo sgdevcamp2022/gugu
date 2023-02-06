@@ -20,7 +20,8 @@ public class ServerController {
     @PostMapping("/server")
     public ResponseEntity<ResultDto> createServer(@RequestBody CreateServerRequestDto createServer) {
         CreateServerCommand command = new CreateServerCommand(
-                createServer.getServerName()
+                createServer.getServerName(),
+                createServer.getImage()
         );
         serverUserCase.createServer(command);
         return ResponseEntity.created(URI.create("/server"))

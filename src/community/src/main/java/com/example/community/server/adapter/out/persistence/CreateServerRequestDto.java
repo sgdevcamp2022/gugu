@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CreateServerRequestDto {
     private String serverName;
+    private String image;
 }
