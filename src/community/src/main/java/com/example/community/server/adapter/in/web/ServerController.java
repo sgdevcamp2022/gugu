@@ -9,9 +9,7 @@ import com.example.community.server.application.port.in.ModifyServerUseCase;
 import com.example.community.util.ResultDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
@@ -22,7 +20,7 @@ public class ServerController {
     private final ModifyServerUseCase modifyServerUseCase;
 
     @PostMapping("/server")
-    public ResponseEntity<ResultDto> createServer(@RequestBody CreateServerRequestDto createServer) {
+    public ResponseEntity<ResultDto> createServer(@RequestBody CreateServerDto createServer) {
         CreateServerCommand command = new CreateServerCommand(
                 createServer.getServerName(),
                 createServer.getImage()

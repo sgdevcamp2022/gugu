@@ -1,6 +1,6 @@
 package com.example.community.server.adapter.in.web;
 
-import com.example.community.server.adapter.out.persistence.CreateServerRequestDto;
+import com.example.community.server.adapter.out.persistence.CreateServerDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ class ServerControllerTest {
         mockMvc.perform(post("/server")
                         .contentType(MediaType.APPLICATION_JSON)
                         .characterEncoding("utf-8")
-                        .content(objectMapper.writeValueAsString(new CreateServerRequestDto("myServer", ""))))
+                        .content(objectMapper.writeValueAsString(new CreateServerDto("myServer", ""))))
                         .andExpect(status().isCreated())
                 .andDo(print());
 
