@@ -2,7 +2,7 @@ package com.example.community.server.adapter.in.web;
 
 import com.example.community.server.adapter.out.persistence.CreateServerRequestDto;
 import com.example.community.server.application.port.in.CreateServerCommand;
-import com.example.community.server.application.port.in.CreateServerUserCase;
+import com.example.community.server.application.port.in.CreateServerUseCase;
 import com.example.community.util.ResultDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import java.net.URI;
 @RestController
 @RequiredArgsConstructor
 public class ServerController {
-    private final CreateServerUserCase serverUserCase;
+    private final CreateServerUseCase serverUseCase;
 
     @PostMapping("/server")
     public ResponseEntity<ResultDto> createServer(@RequestBody CreateServerRequestDto createServer) {
@@ -23,7 +23,7 @@ public class ServerController {
                 createServer.getServerName(),
                 createServer.getImage()
         );
-        serverUserCase.createServer(command);
+        serverUseCase.createServer(command);
         return ResponseEntity.created(URI.create("/server"))
                 .body(ResultDto.builder()
                         .code(201)
