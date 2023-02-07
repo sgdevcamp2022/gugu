@@ -20,7 +20,8 @@ public class ServerJpaEntity {
     @Column
     private String image;
 
-    public ServerJpaEntity(String serverName, String image) {
+    public ServerJpaEntity(int id, String serverName, String image) {
+        this.server_id = id;
         this.server_name = serverName;
         this.image = image;
     }
