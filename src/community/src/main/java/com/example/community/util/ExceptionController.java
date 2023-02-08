@@ -14,7 +14,7 @@ import javax.validation.ConstraintViolationException;
 public class ExceptionController {
 
     @ExceptionHandler({IllegalArgumentException.class})
-    public ResponseEntity BadInputException(IllegalArgumentException exception) {
+    public ResponseEntity badInputException(IllegalArgumentException exception) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
 
