@@ -20,4 +20,13 @@ public class Category {
     private String categoryName;
     private Boolean isPrivate;
     private Integer serverId;
+
+    public static Category withId(Integer id, String categoryName, Boolean isPrivate, Integer serverId) {
+        return Category.builder()
+                .id(id)
+                .categoryName(categoryName)
+                .isPrivate(isPrivate)
+                .serverId(serverId)
+                .build();
+    }
 }

@@ -22,4 +22,14 @@ public class CategoryMapper {
                 .server(serverJpaEntity)
                 .build();
     }
+
+    Category mapToDomainEntity(CategoryJpaEntity entity) {
+        boolean is_private = true;
+        if (entity.getIs_private() == 0) {
+            is_private = false;
+        }
+
+        return Category.withId(entity.getId(), entity.getCategory_name(), is_private, entity.getServer()
+                .getServer_id());
+    }
 }
