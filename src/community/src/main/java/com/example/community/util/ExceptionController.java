@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.ConstraintViolationException;
 
 @ControllerAdvice
@@ -13,7 +14,7 @@ import javax.validation.ConstraintViolationException;
 public class ExceptionController {
 
     @ExceptionHandler({IllegalArgumentException.class})
-    public ResponseEntity BadInputException(IllegalArgumentException exception) {
+    public ResponseEntity badInputException(IllegalArgumentException exception) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
 
@@ -23,6 +24,15 @@ public class ExceptionController {
                 .body(ResultDto.builder()
                         .code(400)
                         .message(exception.getMessage().substring(12))
+                        .build());
+    }
+
+    @ExceptionHandler({EntityNotFoundException.class})
+    public ResponseEntity<ResultDto> notFoundException(RuntimeException runtimeException) {
+        return ResponseEntity.internalServerError()
+                .body(ResultDto.builder()
+                        .code(404)
+                        .message(runtimeException.getMessage())
                         .build());
     }
 }
