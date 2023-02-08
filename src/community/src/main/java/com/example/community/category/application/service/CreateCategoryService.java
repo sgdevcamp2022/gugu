@@ -4,6 +4,8 @@ import com.example.community.category.application.port.in.CreateCategoryCommand;
 import com.example.community.category.application.port.in.CreateCategoryUseCase;
 import com.example.community.category.application.port.out.RecordCategoryStatePort;
 import com.example.community.category.domain.Category;
+import com.example.community.exception.NotFoundException;
+import com.example.community.server.application.port.out.LoadServerStatePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +13,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CreateCategoryService implements CreateCategoryUseCase {
     private final RecordCategoryStatePort recordCategoryStatePort;
+    private final LoadServerStatePort loadServerStatePort;
 
     @Override
     public boolean createCategory(Integer serverId, CreateCategoryCommand command) {
-        // TODO: 유효한 serverId인지 검증
+        if (!loadServerStatePort.existsByServerId(serverId)) {
+            throw new NotFoundException("존재하지 않는 서버 id입니다.");
+        }
 
         Category category = Category.builder()
                 .categoryName(command.getCategoryName())

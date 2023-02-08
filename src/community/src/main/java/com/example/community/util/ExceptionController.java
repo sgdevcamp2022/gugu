@@ -1,5 +1,6 @@
 package com.example.community.util;
 
+import com.example.community.exception.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,15 @@ public class ExceptionController {
                 .body(ResultDto.builder()
                         .code(400)
                         .message(exception.getMessage().substring(12))
+                        .build());
+    }
+
+    @ExceptionHandler({NotFoundException.class})
+    public ResponseEntity<ResultDto> notFoundException(RuntimeException runtimeException) {
+        return ResponseEntity.internalServerError()
+                .body(ResultDto.builder()
+                        .code(404)
+                        .message(runtimeException.getMessage())
                         .build());
     }
 }
