@@ -33,6 +33,11 @@ public class ServerPersistenceAdapter implements
     }
 
     @Override
+    public boolean existsByServerId(Integer serverId) {
+        return serverRepository.existsById(serverId);
+    }
+
+    @Override
     public void updateServer(Server server) {
         serverRepository.save(serverMapper.mapToJpaEntity(server));
     }

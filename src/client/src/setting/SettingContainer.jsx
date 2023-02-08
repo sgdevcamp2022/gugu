@@ -6,12 +6,24 @@ import { server } from './constant/server';
 import { channel } from './constant/channel';
 import { user } from './constant/user';
 import { notFound } from './constant/notFound';
-import Content from './Content';
+// import Content from './Content';
 import SideBar from './SideBar';
 import FullScreenBox from '../layout/FullScreenBox';
+import SettingCloseButton from './SettingCloseButton';
+import ServerMemberContainer from './server-member/ServerMemberContainer';
 
 const Box = styled(FullScreenBox)`
   display: flex;
+  background-color: ${(props) => props.theme.color.primaryBg};
+`;
+
+const ContentContainer = styled.div`
+  width: 80%;
+  padding: 60px 40px;
+  max-width: 660px;
+
+  display: grid;
+  grid-template-columns: auto 80px;
 `;
 
 const settingSelector = (type) => {
@@ -31,7 +43,10 @@ function SettingContainer({ settingType }) {
   return (
     <Box>
       <SideBar settingTypes={settingSelector(settingType)} />
-      <Content />
+      <ContentContainer>
+        <ServerMemberContainer />
+        <SettingCloseButton />
+      </ContentContainer>
     </Box>
   );
 }
