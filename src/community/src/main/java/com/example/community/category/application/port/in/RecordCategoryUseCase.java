@@ -1,5 +1,5 @@
 package com.example.community.category.application.port.in;
 
-public interface CreateCategoryUseCase {
+public interface RecordCategoryUseCase {
     boolean createCategory(Integer serverId, CreateCategoryCommand command);
 }

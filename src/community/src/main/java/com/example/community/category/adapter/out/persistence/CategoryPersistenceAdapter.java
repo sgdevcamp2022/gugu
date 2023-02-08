@@ -5,6 +5,8 @@ import com.example.community.category.domain.Category;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityNotFoundException;
+
 @RequiredArgsConstructor
 @Component
 public class CategoryPersistenceAdapter implements RecordCategoryStatePort{
