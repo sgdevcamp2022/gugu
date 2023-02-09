@@ -1,3 +1,4 @@
+/* eslint-disable spaced-comment */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable no-param-reassign */
@@ -9,16 +10,54 @@ import MicOff from './imgs/MicOff';
 import MicOn from './imgs/MicOn';
 import VideoOff from './imgs/VideoOff';
 import VideoOn from './imgs/VideoOn';
+import { sendToServer } from './utils/socketUtil';
 
 const MyVideo = styled.video`
   border-radius: 10px;
 `;
 
-function Media() {
+const webSocketUrl = `ws://${window.location.host}/signal`;
+const localRoom = 1;
+const localUserName = 'yoon';
+
+//누군가 방에 들어오면 실행할 로직
+async function startMedia() {}
+
+const socket = function Media() {
   const myVideoRef = useRef();
+  const ws = useRef();
   const [micOn, setMicOn] = useState(true);
   const [videoOn, setVideoOn] = useState(true);
   let stream;
+
+  if (!ws.current) {
+    ws.current = new WebSocket(webSocketUrl);
+    ws.current.onopen = () => {
+      sendToServer(
+        {
+          from: localUserName,
+          type: 'join',
+          data: localRoom,
+        },
+        ws
+      );
+    };
+    ws.current.onclose = (error) => {};
+    ws.current.onerror = (error) => {};
+
+    ws.current.onmessage = (event) => {
+      const message = JSON.parse(msg.data);
+      switch (message.type) {
+        case 'text':
+          console.log(
+            `Text message from ${message.from} received: ${message.data}`
+          );
+          break;
+        default:
+          console.log('Error');
+      }
+    };
+  }
   useEffect(() => {
     const getUserMedia = async () => {
       try {
@@ -62,6 +101,6 @@ function Media() {
       </button>
     </div>
   );
-}
+};
 
 export default Media;
