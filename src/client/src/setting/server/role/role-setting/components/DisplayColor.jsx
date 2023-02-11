@@ -6,6 +6,7 @@ import Label from '../layout/Label';
 import useOutsideClick from '../../../../../hooks/useOutsideClick';
 
 const ColorPickerContainer = styled.div`
+  width: 100%;
   margin-top: 24px;
 
   .description {
@@ -17,26 +18,28 @@ const ColorPickerContainer = styled.div`
 `;
 
 const ColorBox = styled.div`
-  height: 50px;
-  box-sizing: border-box;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 300px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
 
   flex-wrap: wrap;
 `;
 
 const DefaultColor = styled.div`
   width: 66px;
+  height: 50px;
   margin-right: 10px;
+
   box-sizing: border-box;
   border-radius: 3px;
 `;
 
 const CustomColor = styled.div`
   width: 66px;
+  height: 50px;
   padding: 3px;
   margin-right: 10px;
+
   box-sizing: border-box;
   position: relative;
 
@@ -71,15 +74,13 @@ const CustomColorModal = styled.div`
   .chrome-picker {
     border: none;
     box-shadow: none;
-
-    div:last-child {
-    }
   }
 `;
 
 const ColorButtonContainer = styled.div`
-  width: 300px;
+  width: 290px;
   height: 50px;
+  margin-top: 10px;
 `;
 
 const ColorButtonRow = styled.div`
@@ -141,6 +142,7 @@ function DisplayColor() {
       <div className="description">
         멤버의 이름은 역할 목록에서 가장 높은 역할의 색상으로 표시돼요.
       </div>
+
       <ColorBox>
         <DefaultColor style={{ backgroundColor: '#99aab5' }} />
         <CustomColor

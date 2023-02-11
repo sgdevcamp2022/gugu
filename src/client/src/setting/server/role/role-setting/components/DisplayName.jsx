@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Label from '../layout/Label';
 
 const NameBox = styled.div`
+  width: 100%;
   padding-bottom: 24px;
   border-bottom: ${(props) => props.theme.border.primary};
 `;
