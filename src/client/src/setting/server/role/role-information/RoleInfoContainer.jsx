@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil';
 import Content from '../../../common/components/Content';
 import Heading3 from '../../../common/components/Heading3';
 import DefaultRoleButton from './components/DefaultRoleButton';
-import RoleInfo from './components/RoleInfo';
+import RoleInfoRow from './components/RoleInfoRow';
 import roleListState from '../../recoil/atom/roleListState';
 import SearchNavBar from './components/SearchNavBar';
 
@@ -62,7 +62,7 @@ function RoleInfoContainer() {
       {roleList.map(
         (role) =>
           role.id !== '0' && (
-            <RoleInfo
+            <RoleInfoRow
               key={role.id}
               id={role.id}
               name={role.name}

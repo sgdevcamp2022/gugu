@@ -128,7 +128,7 @@ const ButtonIcon = styled.div`
   }
 `;
 
-function RoleInfo({ id, color, name, numMember }) {
+function RoleInfoRow({ id, color, name, numMember }) {
   const setIsRoleSettingMode = useSetRecoilState(isRoleSettingModeState);
   const setSelectedRole = useSetRecoilState(selectedRoleState);
   const setRoleSettingType = useSetRecoilState(roleSettingTypeState);
@@ -192,18 +192,18 @@ function RoleInfo({ id, color, name, numMember }) {
   );
 }
 
-RoleInfo.propTypes = {
+RoleInfoRow.propTypes = {
   id: PropTypes.string,
   color: PropTypes.string,
   name: PropTypes.string,
   numMember: PropTypes.number,
 };
 
-RoleInfo.defaultProps = {
+RoleInfoRow.defaultProps = {
   id: '',
   color: '#B9BBBE',
   name: '',
   numMember: 0,
 };
 
-export default RoleInfo;
+export default RoleInfoRow;
