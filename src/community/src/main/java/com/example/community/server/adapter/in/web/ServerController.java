@@ -17,7 +17,7 @@ import java.net.URI;
 public class ServerController {
     private final RecordServerUseCase recordServerUseCase;
 
-    @PostMapping("/server")
+    @PostMapping("/servers")
     public ResponseEntity<ResultDto> createServer(@RequestBody CreateServerDto createServer) {
         CreateServerCommand command = new CreateServerCommand(
                 createServer.getServerName(),
