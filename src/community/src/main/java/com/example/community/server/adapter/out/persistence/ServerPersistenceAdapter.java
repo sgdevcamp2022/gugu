@@ -4,7 +4,6 @@ import com.example.community.server.application.port.in.CreateServerCommand;
 import com.example.community.server.application.port.in.UpdateServerCommand;
 import com.example.community.server.application.port.out.LoadServerStatePort;
 import com.example.community.server.application.port.out.RecordServerStatePort;
-import com.example.community.server.application.port.out.UpdateServerStatePort;
 import com.example.community.server.domain.Server;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -18,16 +17,25 @@ public class ServerPersistenceAdapter implements RecordServerStatePort, LoadServ
     private final ServerMapper serverMapper;
 
     @Override
-    public void saveServer(Server server) {
+    public void saveServer(CreateServerCommand command) {
+        Server server = new Server(command.getServerName(), command.getImage());
         serverRepository.save(serverMapper.mapToJpaEntity(server));
     }
 
     @Override
-    public Server loadServer(int id, ModifyServerCommand modifyServer) {
-        ServerJpaEntity server = serverRepository.findById(id).orElseThrow(() -> new EntityNotFoundException());
-        server.setServer_name(modifyServer.getServerName());
-        server.setImage(modifyServer.getImage());
-        return serverMapper.mapToDomainEntity(server);
+    public Server loadServer(Integer serverId) {
+        ServerJpaEntity serverJpaEntity = serverRepository.findById(serverId)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 서버 id입니다."));
+        return serverMapper.mapToDomainEntity(serverJpaEntity);
+    }
+
+    @Override
+    public void updateServer(Integer serverId, UpdateServerCommand command) {
+        ServerJpaEntity serverJpaEntity = serverRepository.findById(serverId)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 서버 id입니다."));
+        serverJpaEntity.setServer_name(command.getServerName());
+        serverJpaEntity.setImage(serverJpaEntity.getImage());
+        serverRepository.save(serverJpaEntity);
     }
 
     @Override
@@ -36,10 +44,5 @@ public class ServerPersistenceAdapter implements RecordServerStatePort, LoadServ
             throw new EntityNotFoundException("존재하지 않는 서버 id입니다.");
         }
         return true;
-    }
-
-    @Override
-    public void updateServer(Server server) {
-        serverRepository.save(serverMapper.mapToJpaEntity(server));
     }
 }
