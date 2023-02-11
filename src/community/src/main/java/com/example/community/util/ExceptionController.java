@@ -28,11 +28,11 @@ public class ExceptionController {
     }
 
     @ExceptionHandler({EntityNotFoundException.class})
-    public ResponseEntity<ResultDto> notFoundException(RuntimeException runtimeException) {
+    public ResponseEntity<ResultDto> notFoundException(EntityNotFoundException exception) {
         return ResponseEntity.internalServerError()
                 .body(ResultDto.builder()
                         .code(404)
-                        .message(runtimeException.getMessage())
+                        .message(exception.getMessage())
                         .build());
     }
 }
