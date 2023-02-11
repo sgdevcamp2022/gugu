@@ -34,7 +34,10 @@ public class ServerPersistenceAdapter implements
 
     @Override
     public boolean existsByServerId(Integer serverId) {
-        return serverRepository.existsById(serverId);
+        if (!serverRepository.existsById(serverId)) {
+            throw new EntityNotFoundException("존재하지 않는 서버 id입니다.");
+        }
+        return true;
     }
 
     @Override
