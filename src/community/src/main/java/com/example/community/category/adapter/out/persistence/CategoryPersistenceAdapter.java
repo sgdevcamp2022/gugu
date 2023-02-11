@@ -20,10 +20,10 @@ public class CategoryPersistenceAdapter implements RecordCategoryStatePort, Load
     }
 
     @Override
-    public Category loadCategory(Integer id, UpdateCategoryCommand command) {
-        CategoryJpaEntity category = categoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("존재하지 않는 카테고리 id입니다."));
-        category.setCategory_name(command.getCategoryName());
-        return categoryMapper.mapToDomainEntity(category);
+    public Category loadCategory(Integer categoryId) {
+        CategoryJpaEntity categoryJpaEntity = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 카테고리 id입니다."));
+        return categoryMapper.mapToDomainEntity(categoryJpaEntity);
     }
 
     @Override
