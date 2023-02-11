@@ -10,8 +10,6 @@ import com.example.community.server.application.port.out.LoadServerStatePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
-
 @Service
 @RequiredArgsConstructor
 public class RecordCategoryService implements RecordCategoryUseCase {
@@ -21,9 +19,7 @@ public class RecordCategoryService implements RecordCategoryUseCase {
 
     @Override
     public boolean createCategory(Integer serverId, CreateCategoryCommand command) {
-        if (!loadServerStatePort.existsByServerId(serverId)) {
-            throw new EntityNotFoundException("존재하지 않는 서버 id입니다.");
-        }
+        loadServerStatePort.existsByServerId(serverId);
 
         Category category = Category.builder()
                 .categoryName(command.getCategoryName())

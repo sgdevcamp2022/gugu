@@ -25,4 +25,12 @@ public class CategoryPersistenceAdapter implements RecordCategoryStatePort, Load
         category.setCategory_name(command.getCategoryName());
         return categoryMapper.mapToDomainEntity(category);
     }
+
+    @Override
+    public boolean existsByCategoryId(Integer categoryId) {
+        if (!categoryRepository.existsById(categoryId)) {
+            throw new EntityNotFoundException("존재하지 않는 카테고리 id입니다.");
+        }
+        return true;
+    }
 }
