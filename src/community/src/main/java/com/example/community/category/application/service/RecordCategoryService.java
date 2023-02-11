@@ -31,9 +31,8 @@ public class RecordCategoryService implements RecordCategoryUseCase {
     }
 
     @Override
-    public boolean updateCategory(Integer serverId, UpdateCategoryCommand command) {
-        Category category = loadCategoryStatePort.loadCategory(serverId, command);
-        recordCategoryStatePort.saveCategory(category);
+    public boolean updateCategory(Integer categoryId, UpdateCategoryCommand command) {
+        recordCategoryStatePort.updateCategory(categoryId, command);
         return true;
     }
 
