@@ -1,14 +1,14 @@
 package com.example.community.channel.adapter.in.web;
 
+import com.example.community.channel.adapter.out.persistence.CreateChannelDto;
+import com.example.community.channel.adapter.out.persistence.UpdateChannelDto;
 import com.example.community.channel.application.port.in.CreateChannelCommand;
 import com.example.community.channel.application.port.in.RecordChannelUseCase;
+import com.example.community.channel.application.port.in.UpdateChannelCommand;
 import com.example.community.util.ResultDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
@@ -29,6 +29,20 @@ public class ChannelController {
                 .body(ResultDto.builder()
                         .code(201)
                         .message("채널 생성이 완료되었습니다.")
+                        .build());
+    }
+
+    @PatchMapping("/channels/{channelId}")
+    public ResponseEntity<ResultDto> updateChannel(@PathVariable("channelId") Integer channelId, @RequestBody UpdateChannelDto updateChannelDto) {
+        UpdateChannelCommand command = new UpdateChannelCommand(
+                updateChannelDto.getChannelName(),
+                updateChannelDto.getDescription()
+        );
+        recordChannelUseCase.updateChannel(channelId, command);
+        return ResponseEntity.ok()
+                .body(ResultDto.builder()
+                        .code(200)
+                        .message("채널 수정이 완료되었습니다.")
                         .build());
     }
 }
