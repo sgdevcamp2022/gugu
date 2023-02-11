@@ -1,6 +1,7 @@
 package com.example.community.server.adapter.out.persistence;
 
-import com.example.community.server.application.port.in.ModifyServerCommand;
+import com.example.community.server.application.port.in.CreateServerCommand;
+import com.example.community.server.application.port.in.UpdateServerCommand;
 import com.example.community.server.application.port.out.LoadServerStatePort;
 import com.example.community.server.application.port.out.RecordServerStatePort;
 import com.example.community.server.application.port.out.UpdateServerStatePort;
@@ -12,10 +13,7 @@ import javax.persistence.EntityNotFoundException;
 
 @RequiredArgsConstructor
 @Component
-public class ServerPersistenceAdapter implements
-        RecordServerStatePort,
-        LoadServerStatePort,
-        UpdateServerStatePort {
+public class ServerPersistenceAdapter implements RecordServerStatePort, LoadServerStatePort {
     private final ServerRepository serverRepository;
     private final ServerMapper serverMapper;
 
