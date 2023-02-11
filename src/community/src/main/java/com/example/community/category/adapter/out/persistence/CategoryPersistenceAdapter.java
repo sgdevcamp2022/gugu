@@ -1,5 +1,6 @@
 package com.example.community.category.adapter.out.persistence;
 
+import com.example.community.category.application.port.in.CreateCategoryCommand;
 import com.example.community.category.application.port.in.UpdateCategoryCommand;
 import com.example.community.category.application.port.out.LoadCategoryStatePort;
 import com.example.community.category.application.port.out.RecordCategoryStatePort;
@@ -15,7 +16,12 @@ public class CategoryPersistenceAdapter implements RecordCategoryStatePort, Load
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
     @Override
-    public void saveCategory(Category category) {
+    public void saveCategory(Integer serverId, CreateCategoryCommand command) {
+        Category category = Category.builder()
+                .categoryName(command.getCategoryName())
+                .isPrivate(command.getIsPrivate())
+                .serverId(serverId)
+                .build();
         categoryRepository.save(categoryMapper.mapToJpaEntity(category));
     }
 

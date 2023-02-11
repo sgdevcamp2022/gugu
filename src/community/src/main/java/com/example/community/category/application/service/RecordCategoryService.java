@@ -20,13 +20,7 @@ public class RecordCategoryService implements RecordCategoryUseCase {
     @Override
     public boolean createCategory(Integer serverId, CreateCategoryCommand command) {
         loadServerStatePort.existsByServerId(serverId);
-
-        Category category = Category.builder()
-                .categoryName(command.getCategoryName())
-                .isPrivate(command.getIsPrivate())
-                .serverId(serverId)
-                .build();
-        recordCategoryStatePort.saveCategory(category);
+        recordCategoryStatePort.saveCategory(serverId, command);
         return true;
     }
 
