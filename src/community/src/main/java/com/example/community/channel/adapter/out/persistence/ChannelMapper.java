@@ -21,25 +21,22 @@ public class ChannelMapper {
         ServerJpaEntity serverJpaEntity = new ServerJpaEntity();
         serverJpaEntity.setServer_id(channel.getServerId());
 
-        if (channel.getCategoryId() == null) {
-            return ChannelJpaEntity.builder()
-                    .channel_name(channel.getChannelName())
-                    .channel_type(channelType)
-                    .is_private(isPrivate)
-                    .server(serverJpaEntity)
-                    .build();
-        }
-
-        CategoryJpaEntity categoryJpaEntity = new CategoryJpaEntity();
-        categoryJpaEntity.setId(channel.getCategoryId());
-
-        return ChannelJpaEntity.builder()
+        ChannelJpaEntity channelJpaEntity = ChannelJpaEntity.builder()
                 .channel_name(channel.getChannelName())
                 .channel_type(channelType)
                 .is_private(isPrivate)
                 .server(serverJpaEntity)
-                .category(categoryJpaEntity)
                 .build();
+
+        if (channel.getCategoryId() == null) {
+            return channelJpaEntity;
+        }
+
+        CategoryJpaEntity categoryJpaEntity = new CategoryJpaEntity();
+        categoryJpaEntity.setId(channel.getCategoryId());
+        channelJpaEntity.setCategory(categoryJpaEntity);
+
+        return channelJpaEntity;
     }
 
     Channel mapToDomainEntity(ChannelJpaEntity entity) {

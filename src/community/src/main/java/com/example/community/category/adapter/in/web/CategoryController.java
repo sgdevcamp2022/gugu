@@ -18,7 +18,7 @@ public class CategoryController {
     private final RecordCategoryUseCase recordCategoryUseCase;
 
     @PostMapping("/{serverId}/categories")
-    public ResponseEntity<ResultDto> createCategory(@PathVariable("serverId") int serverId, @RequestBody CreateCategoryDto createCategory) {
+    public ResponseEntity<ResultDto> createCategory(@PathVariable("serverId") Integer serverId, @RequestBody CreateCategoryDto createCategory) {
         CreateCategoryCommand command = new CreateCategoryCommand(
                 createCategory.getCategoryName(),
                 createCategory.getIsPrivate()
@@ -32,11 +32,11 @@ public class CategoryController {
     }
 
     @PatchMapping("/categories/{categoryId}")
-    public ResponseEntity<ResultDto> updateCategory(@PathVariable("categoryId") Integer id, @RequestBody UpdateCategoryDto updateCategoryDto) {
+    public ResponseEntity<ResultDto> updateCategory(@PathVariable("categoryId") Integer categoryId, @RequestBody UpdateCategoryDto updateCategoryDto) {
         UpdateCategoryCommand command = new UpdateCategoryCommand(
                 updateCategoryDto.getCategoryName()
         );
-        recordCategoryUseCase.updateCategory(id, command);
+        recordCategoryUseCase.updateCategory(categoryId, command);
         return ResponseEntity.ok()
                 .body(ResultDto.builder()
                         .code(200)

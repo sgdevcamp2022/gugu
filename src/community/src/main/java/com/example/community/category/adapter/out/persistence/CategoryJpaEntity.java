@@ -17,13 +17,13 @@ import javax.persistence.*;
 public class CategoryJpaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column
     private String category_name;
 
     @Column
-    private int is_private;
+    private Integer is_private;
 
     @ManyToOne
     @JoinColumn(name = "server_id")
