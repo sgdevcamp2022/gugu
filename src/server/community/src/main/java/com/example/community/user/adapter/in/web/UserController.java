@@ -2,9 +2,7 @@ package com.example.community.user.adapter.in.web;
 
 import com.example.community.user.adapter.out.persistence.SignInRequestDto;
 import com.example.community.user.adapter.out.persistence.SignUpRequestDto;
-import com.example.community.user.adapter.out.persistence.TokenResponse;
-import com.example.community.user.application.port.in.SignInCommand;
-import com.example.community.user.application.port.in.SignInUseCase;
+import com.example.community.user.application.port.in.RecordUserUseCase;
 import com.example.community.user.application.port.in.SignUpCommand;
 import com.example.community.user.application.port.in.SignUpUseCase;
 import com.example.community.util.JwtTokenProvider;
@@ -18,8 +16,7 @@ import java.net.URI;
 @RestController
 @RequiredArgsConstructor
 public class UserController {
-    private final SignUpUseCase signUpUseCase;
-    private final SignInUseCase signInUseCase;
+    private final RecordUserUseCase recordUserUseCase;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
 
