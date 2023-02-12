@@ -1,0 +1,6 @@
+#server:
+#  port: 8081 #포트번호 지정
+#
+#spring:
+#  application:
+#    name: media # 서비스 ID

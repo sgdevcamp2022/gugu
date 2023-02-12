@@ -1,11 +1,11 @@
 version: '3.9'
 
 services:
-  eureka-server:
-    image: eureka-server
+  eureka:
+    image: eureka
     ports:
       - "8761:8761"
-  gateway-server:
+  cloud-gateway:
     image: cloud-gateway
     ports:
       - "8080:8080"
