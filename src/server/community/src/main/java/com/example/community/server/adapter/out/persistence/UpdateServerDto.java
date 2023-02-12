@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServerResponseDto {
+public class UpdateServerDto {
     private String serverName;
     private String image;
 }

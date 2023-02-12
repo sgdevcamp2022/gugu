@@ -1,21 +1,26 @@
 package com.example.community.server.application.service;
 
 import com.example.community.server.application.port.in.CreateServerCommand;
-import com.example.community.server.application.port.in.CreateServerUseCase;
+import com.example.community.server.application.port.in.RecordServerUseCase;
+import com.example.community.server.application.port.in.UpdateServerCommand;
 import com.example.community.server.application.port.out.RecordServerStatePort;
-import com.example.community.server.domain.Server;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CreateServerService implements CreateServerUseCase {
+public class RecordServerService implements RecordServerUseCase {
     private final RecordServerStatePort recordServerStatePort;
 
     @Override
     public boolean createServer(CreateServerCommand command) {
-        Server server = new Server(command.getServerName(), command.getImage());
-        recordServerStatePort.saveServer(server);
+        recordServerStatePort.saveServer(command);
+        return true;
+    }
+
+    @Override
+    public boolean updateServer(Integer serverId, UpdateServerCommand command) {
+        recordServerStatePort.updateServer(serverId, command);
         return true;
     }
 }
