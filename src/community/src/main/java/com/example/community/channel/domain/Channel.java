@@ -24,14 +24,6 @@ public class Channel {
     private Integer serverId;
     private Integer categoryId;
 
-    public void updateChannelName(String channelName) {
-        this.channelName = channelName;
-    }
-
-    public void updateDescription(String description) {
-        this.description = description;
-    }
-
     public static Channel withId(Integer id, String channelName, Character channelType, Boolean isPrivate, String description, Integer serverId, Integer categoryId) {
         return Channel.builder()
                 .id(id)
