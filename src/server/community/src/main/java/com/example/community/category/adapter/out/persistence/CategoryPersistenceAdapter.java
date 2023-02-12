@@ -1,5 +1,6 @@
 package com.example.community.category.adapter.out.persistence;
 
+import com.example.community.category.application.port.in.CreateCategoryCommand;
 import com.example.community.category.application.port.in.UpdateCategoryCommand;
 import com.example.community.category.application.port.out.LoadCategoryStatePort;
 import com.example.community.category.application.port.out.RecordCategoryStatePort;
@@ -15,15 +16,28 @@ public class CategoryPersistenceAdapter implements RecordCategoryStatePort, Load
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
     @Override
-    public void saveCategory(Category category) {
+    public void saveCategory(Integer serverId, CreateCategoryCommand command) {
+        Category category = Category.builder()
+                .categoryName(command.getCategoryName())
+                .isPrivate(command.getIsPrivate())
+                .serverId(serverId)
+                .build();
         categoryRepository.save(categoryMapper.mapToJpaEntity(category));
     }
 
     @Override
-    public Category loadCategory(Integer id, UpdateCategoryCommand command) {
-        CategoryJpaEntity category = categoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("존재하지 않는 카테고리 id입니다."));
-        category.setCategory_name(command.getCategoryName());
-        return categoryMapper.mapToDomainEntity(category);
+    public void updateCategory(Integer categoryId, UpdateCategoryCommand command) {
+        CategoryJpaEntity categoryJpaEntity = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 카테고리 id입니다."));
+        categoryJpaEntity.setCategory_name(command.getCategoryName());
+        categoryRepository.save(categoryJpaEntity);
+    }
+
+    @Override
+    public Category loadCategory(Integer categoryId) {
+        CategoryJpaEntity categoryJpaEntity = categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 카테고리 id입니다."));
+        return categoryMapper.mapToDomainEntity(categoryJpaEntity);
     }
 
     @Override

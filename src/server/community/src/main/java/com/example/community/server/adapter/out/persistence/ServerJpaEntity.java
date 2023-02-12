@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class ServerJpaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int server_id;
+    private Integer server_id;
 
     @Column
     private String server_name;

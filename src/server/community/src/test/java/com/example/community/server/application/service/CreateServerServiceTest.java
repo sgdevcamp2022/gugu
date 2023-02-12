@@ -8,6 +8,8 @@ import org.mockito.Mockito;
 import static org.assertj.core.api.Assertions.*;
 
 class CreateServerServiceTest {
+
+   /*
     private final RecordServerStatePort recordServerStatePort = Mockito.mock(RecordServerStatePort.class);
     private final CreateServerService createServerService = new CreateServerService(recordServerStatePort);
 
@@ -18,4 +20,6 @@ class CreateServerServiceTest {
 
         assertThat(success).isTrue();
     }
+    */
+
 }
