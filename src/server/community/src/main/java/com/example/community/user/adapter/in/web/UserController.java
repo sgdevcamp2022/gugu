@@ -1,11 +1,10 @@
 package com.example.community.user.adapter.in.web;
 
-import com.example.community.user.adapter.out.persistence.SignInRequestDto;
 import com.example.community.user.adapter.out.persistence.SignUpRequestDto;
 import com.example.community.user.application.port.in.RecordUserUseCase;
 import com.example.community.user.application.port.in.SignUpCommand;
-import com.example.community.user.application.port.in.SignUpUseCase;
 import com.example.community.util.JwtTokenProvider;
+import com.example.community.util.ResultDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,21 +19,21 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
 
-    @PostMapping("/user")
-    public ResponseEntity<String> signUpUser(@RequestBody SignUpRequestDto signUpUser) {
+    @PostMapping("/users")
+    public ResponseEntity<ResultDto> signUpUser(@RequestBody SignUpRequestDto signUpUser) {
         String encodedPassword = passwordEncoder.encode(signUpUser.getPassword());
         SignUpCommand command = new SignUpCommand(
                 signUpUser.getEmail(),
                 encodedPassword,
                 signUpUser.getUserName(),
-                signUpUser.getBirth());
-
-        signUpUseCase.checkEmailDuplication(command.getEmail());
-        signUpUseCase.checkUserNameDuplication(command.getUserName());
-        signUpUseCase.signUp(command);
-
+                signUpUser.getBirth()
+        );
+        recordUserUseCase.signUp(command);
         return ResponseEntity.created(URI.create("/user"))
-                .body("회원가입을 성공했습니다.");
+                .body(ResultDto.builder()
+                        .code(201)
+                        .message("회원 가입이 완료되었습니다.")
+                        .build());
     }
 
     @PostMapping("/login")
