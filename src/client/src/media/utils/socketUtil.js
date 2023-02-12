@@ -3,4 +3,6 @@ export function sendToServer(msg, socket) {
   socket.send(msgJSON);
 }
 
-export function foo() {}
+export function handleErrorMessage(message) {
+  console.error(message);
+}
