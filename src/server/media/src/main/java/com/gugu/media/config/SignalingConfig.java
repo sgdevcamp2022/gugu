@@ -47,21 +47,23 @@ public class SignalingConfig implements WebSocketConfigurer, WebSocketMessageBro
 
 package com.gugu.media.config;
 
-import com.gugu.media.application.service.RoomService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.WebSocketHandler;
 import org.springframework.web.socket.config.annotation.*;
 import org.springframework.web.socket.server.standard.ServletServerContainerFactoryBean;
 
 @Configuration
-//@EnableWebSocketMessageBroker
 @RequiredArgsConstructor
 @EnableWebSocketMessageBroker
-public class SignalingConfig implements WebSocketConfigurer{
+public class SignalingConfig implements WebSocketConfigurer, WebSocketMessageBrokerConfigurer{
 
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        WebSocketMessageBrokerConfigurer.super.registerStompEndpoints(registry);
+        registry.addEndpoint("/signal");
+    }
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(signalHandler(), "/signal").setAllowedOrigins("*");

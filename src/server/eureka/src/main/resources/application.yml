@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: eureka-server-image # 서비스 ID
+    name: eureka # 서비스 ID
 
 eureka:
   client:
