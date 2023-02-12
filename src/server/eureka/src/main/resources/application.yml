@@ -1,0 +1,11 @@
+server:
+  port: 8761 #포트번호 지정
+
+spring:
+  application:
+    name: eureka-server-image # 서비스 ID
+
+eureka:
+  client:
+    register-with-eureka: false # default : true
+    fetch-registry: false # default : true
