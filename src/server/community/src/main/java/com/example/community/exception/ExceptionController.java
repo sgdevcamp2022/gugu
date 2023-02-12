@@ -13,9 +13,13 @@ import javax.validation.ConstraintViolationException;
 @Slf4j
 public class ExceptionController {
 
-    @ExceptionHandler({IllegalArgumentException.class})
-    public ResponseEntity badInputException(IllegalArgumentException exception) {
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
+    @ExceptionHandler({AlreadyExistException.class})
+    public ResponseEntity<ResultDto> alreadyExistException(AlreadyExistException exception) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(ResultDto.builder()
+                        .code(409)
+                        .message(exception.getMessage())
+                        .build());
     }
 
     @ExceptionHandler({ConstraintViolationException.class})

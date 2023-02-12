@@ -17,7 +17,13 @@ public class AccountSignUpService implements SignUpUseCase {
 
     @Override
     public boolean signUp(SignUpCommand command) {
-        User user = new User(command.getEmail(), command.getPassword(), command.getUserName(), command.getBirth());
+        if (loadUserStatePort.existByEmail(command.getEmail())) {
+            throw new AlreadyExistException("이미 존재하는 이메일입니다.");
+        } else if (loadUserStatePort.existByUsername(command.getUserName())) {
+            throw new AlreadyExistException("이미 존재하는 닉네임입니다.");
+        }
+
+        User user = User.signUpUser(command.getEmail(), command.getPassword(), command.getUserName(), command.getBirth());
         recordUserStatePort.saveUser(user);
         return true;
     }
