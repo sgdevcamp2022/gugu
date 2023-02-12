@@ -1,9 +1,10 @@
 package com.example.community.channel.application.port.out;
 
-import com.example.community.channel.domain.Channel;
+import com.example.community.channel.application.port.in.CreateChannelCommand;
+import com.example.community.channel.application.port.in.UpdateChannelCommand;
 
 public interface RecordChannelStatePort {
-    void saveChannel(Channel channel);
+    void saveChannel(Integer serverId, Integer categoryId, CreateChannelCommand command);
 
-    void updateChannel(Integer id, Channel channel);
+    void updateChannel(Integer id, UpdateChannelCommand command);
 }
