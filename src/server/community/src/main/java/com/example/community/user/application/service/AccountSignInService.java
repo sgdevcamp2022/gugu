@@ -39,7 +39,7 @@ public class AccountSignInService implements SignInUserUseCase {
     private void checkPassword(String password, String encodedPassword) {
         boolean isMatch = passwordEncoder.matches(password, encodedPassword);
         if (!isMatch) {
-            throw new IllegalArgumentException("아이디 혹은 비밀번호를 확인하세요.");
+            throw new BadCredentialsException("잘못된 아이디 혹은 비밀번호입니다.");
         }
     }
 }
