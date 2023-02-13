@@ -1,5 +1,6 @@
-package com.example.community.util;
+package com.example.community.exception;
 
+import com.example.community.util.ResultDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.ConstraintViolationException;
+import java.util.NoSuchElementException;
 
 @ControllerAdvice
 @Slf4j
@@ -27,7 +29,7 @@ public class ExceptionController {
         return ResponseEntity.badRequest()
                 .body(ResultDto.builder()
                         .code(400)
-                        .message(exception.getMessage().substring(12))
+                        .message(exception.getMessage())
                         .build());
     }
 
