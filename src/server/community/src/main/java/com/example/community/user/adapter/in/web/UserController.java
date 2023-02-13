@@ -1,11 +1,17 @@
 package com.example.community.user.adapter.in.web;
 
+import com.example.community.user.adapter.out.persistence.SignInRequestDto;
 import com.example.community.user.adapter.out.persistence.SignUpRequestDto;
+import com.example.community.user.adapter.out.persistence.TokenResponseDto;
 import com.example.community.user.application.port.in.RecordUserUseCase;
+import com.example.community.user.application.port.in.SignInCommand;
+import com.example.community.user.application.port.in.SignInUserUseCase;
 import com.example.community.user.application.port.in.SignUpCommand;
 import com.example.community.util.JwtTokenProvider;
 import com.example.community.util.ResultDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +22,7 @@ import java.net.URI;
 @RequiredArgsConstructor
 public class UserController {
     private final RecordUserUseCase recordUserUseCase;
+    private final SignInUserUseCase signInUserUseCase;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
 
@@ -37,15 +44,27 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<TokenResponse> signInUser(@RequestBody SignInRequestDto signInUser) {
+    public ResponseEntity<TokenResponseDto> signInUser(@RequestBody SignInRequestDto signInUser) {
         SignInCommand command = new SignInCommand(
                 signInUser.getEmail(),
                 signInUser.getPassword());
-        signInUseCase.signIn(command);
+        signInUserUseCase.signIn(command);
 
-        String token = jwtTokenProvider.createToken(signInUser.getEmail());
+        Integer userId = signInUserUseCase.loadUserId(command.getEmail());
+
+        String accessToken = jwtTokenProvider.createAuthToken(userId);
+        String refreshToken = jwtTokenProvider.createRefreshToken(userId);
+
+        signInUserUseCase.updateRefreshToken(userId, refreshToken);
+
+        ResponseCookie responseCookie = ResponseCookie.from("refreshToken", refreshToken).build();
 
         return ResponseEntity.ok()
-                .body(new TokenResponse(token, "bearer"));
+                .header(HttpHeaders.SET_COOKIE, responseCookie.toString())
+                .body(TokenResponseDto.builder()
+                        .code(200)
+                        .message("로그인이 완료되었습니다.")
+                        .accessToken(accessToken)
+                        .build());
     }
 }
