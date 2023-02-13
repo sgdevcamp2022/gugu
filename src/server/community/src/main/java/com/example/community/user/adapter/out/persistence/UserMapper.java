@@ -4,6 +4,7 @@ import com.example.community.user.domain.User;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
+import java.util.Optional;
 
 @Component
 class UserMapper {
@@ -19,5 +20,9 @@ class UserMapper {
                 .banner_color(user.getBannerColor())
                 .message(user.getMessage())
                 .build();
+    }
+
+    public LoadSignInUserDto mapToLoadUserDto(Optional<UserJpaEntity> userJpaEntity) {
+        return new LoadSignInUserDto(userJpaEntity.get().getEmail(), userJpaEntity.get().getE_password());
     }
 }
