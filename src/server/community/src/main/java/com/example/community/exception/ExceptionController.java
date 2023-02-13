@@ -39,4 +39,13 @@ public class ExceptionController {
                         .message(exception.getMessage())
                         .build());
     }
+
+    @ExceptionHandler({BadCredentialsException.class})
+    public ResponseEntity<ResultDto> badCredentialsException(BadCredentialsException exception) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(ResultDto.builder()
+                        .code(401)
+                        .message(exception.getMessage())
+                        .build());
+    }
 }
