@@ -18,6 +18,14 @@ public class UserPersistenceAdapter implements RecordUserStatePort, LoadUserStat
     }
 
     @Override
+    public void updateRefreshToken(Integer userId, String refreshToken) {
+        UserJpaEntity userJpaEntity = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 계정입니다."));
+        userJpaEntity.setRefresh_token(refreshToken);
+        userRepository.save(userJpaEntity);
+    }
+
+    @Override
     public boolean existByEmail(String email) {
         return userRepository.existsByEmail(email);
     }

@@ -4,4 +4,6 @@ import com.example.community.user.domain.User;
 
 public interface RecordUserStatePort {
     void saveUser(User user);
+
+    void updateRefreshToken(Integer userId, String refreshToken);
 }

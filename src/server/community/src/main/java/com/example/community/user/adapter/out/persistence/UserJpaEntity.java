@@ -37,8 +37,11 @@ public class UserJpaEntity {
     @Column
     private String message;
 
+    @Column
+    private String refresh_token;
+
     @Builder
-    public UserJpaEntity(int user_id, String email, String e_password, String username, Date birth, String image, String banner_color, String message) {
+    public UserJpaEntity(int user_id, String email, String e_password, String username, Date birth, String image, String banner_color, String message, String refresh_token) {
         this.user_id = user_id;
         this.email = email;
         this.e_password = e_password;
@@ -47,5 +50,6 @@ public class UserJpaEntity {
         this.image = image;
         this.banner_color = banner_color;
         this.message = message;
+        this.refresh_token = refresh_token;
     }
 }
