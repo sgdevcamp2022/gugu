@@ -12,13 +12,19 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AccountSignInService implements SignInUseCase {
     private final LoadUserStatePort loadUserStatePort;
+    private final RecordUserStatePort recordUserStatePort;
     private final PasswordEncoder passwordEncoder;
 
 
     @Override
-    public void signIn(SignInCommand command) {
-        SignInRequestDto userAccount = loadUserStatePort.loadByEmail(command.getEmail());
-        checkPassword(command.getPassword(), userAccount.getPassword());
+    public boolean updateRefreshToken(Integer userId, String refreshToken) {
+        recordUserStatePort.updateRefreshToken(userId, refreshToken);
+        return true;
+    }
+
+    @Override
+    public Integer loadUserId(String email) {
+        return loadUserStatePort.loadUserIdByEmail(email);
     }
 
     private void checkPassword(String password, String encodedPassword) {
