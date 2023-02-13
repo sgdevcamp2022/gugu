@@ -31,8 +31,8 @@ public class ExceptionController {
                         .build());
     }
 
-    @ExceptionHandler({EntityNotFoundException.class})
-    public ResponseEntity<ResultDto> notFoundException(EntityNotFoundException exception) {
+    @ExceptionHandler({EntityNotFoundException.class, NoSuchElementException.class})
+    public ResponseEntity<ResultDto> notFoundException(Exception exception) {
         return ResponseEntity.internalServerError()
                 .body(ResultDto.builder()
                         .code(404)

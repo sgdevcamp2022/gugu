@@ -6,6 +6,9 @@ import com.example.community.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.NoSuchElementException;
+
 @RequiredArgsConstructor
 @Component
 public class UserPersistenceAdapter implements RecordUserStatePort, LoadUserStatePort {
@@ -36,7 +39,20 @@ public class UserPersistenceAdapter implements RecordUserStatePort, LoadUserStat
     }
 
     @Override
-    public SignInRequestDto loadByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다"));
+    public boolean checkUserAccountExist(String email) {
+        if (!userRepository.existsByEmail(email)) {
+            throw new NoSuchElementException("존재하지 않는 계정입니다.");
+        }
+        return true;
+    }
+
+    @Override
+    public LoadSignInUserDto loadByEmail(String email) {
+        return userMapper.mapToLoadUserDto(userRepository.findByEmail(email));
+    }
+
+    @Override
+    public Integer loadUserIdByEmail(String email) {
+        return userRepository.findByEmail(email).get().getUser_id();
     }
 }
