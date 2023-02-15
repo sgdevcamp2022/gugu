@@ -1,6 +1,6 @@
 const Theme = {
   color: {
-    primaryBg: '#35393F',
+    primaryBg: '#36393F',
     secondaryBg: '#2F3136',
 
     hoverBg: '#4F545C66',
@@ -15,6 +15,7 @@ const Theme = {
     blue: '#5865F2',
     darkBlue: '#4745C4',
     lightBlue: 'rgb(88, 101, 242)',
+    green: '#3ba55c',
 
     border: 'rgba(184, 186, 189, 0.25)',
 
