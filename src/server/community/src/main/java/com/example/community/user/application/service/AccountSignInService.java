@@ -6,6 +6,7 @@ import com.example.community.user.application.port.in.SignInCommand;
 import com.example.community.user.application.port.in.SignInUserUseCase;
 import com.example.community.user.application.port.out.LoadUserStatePort;
 import com.example.community.user.application.port.out.RecordUserStatePort;
+import com.example.community.util.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ public class AccountSignInService implements SignInUserUseCase {
     private final LoadUserStatePort loadUserStatePort;
     private final RecordUserStatePort recordUserStatePort;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Override
     public boolean signIn(SignInCommand command) {
@@ -35,6 +37,15 @@ public class AccountSignInService implements SignInUserUseCase {
     public Integer loadUserId(String email) {
         return loadUserStatePort.loadUserIdByEmail(email);
     }
+
+    /*
+    @Override
+    public void reissueToken(String refreshToken) {
+        Integer userId = Integer.valueOf((String) jwtTokenProvider.parseJwtToken(refreshToken).get("userId"));
+        recordUserStatePort.reissueRefreshToken(userId);
+    }
+
+     */
 
     private void checkPassword(String password, String encodedPassword) {
         boolean isMatch = passwordEncoder.matches(password, encodedPassword);

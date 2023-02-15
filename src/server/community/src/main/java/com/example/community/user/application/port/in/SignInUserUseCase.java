@@ -6,4 +6,6 @@ public interface SignInUserUseCase {
     boolean updateRefreshToken(Integer userId, String refreshToken);
 
     Integer loadUserId(String email);
+
+    // void reissueRefreshToken(String refreshToken);
 }

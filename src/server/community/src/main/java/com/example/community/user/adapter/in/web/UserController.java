@@ -14,8 +14,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
 
 @RestController
@@ -57,14 +60,22 @@ public class UserController {
 
         signInUserUseCase.updateRefreshToken(userId, refreshToken);
 
-        ResponseCookie responseCookie = ResponseCookie.from("refreshToken", refreshToken).build();
-
         return ResponseEntity.ok()
-                .header(HttpHeaders.SET_COOKIE, responseCookie.toString())
+                .header(HttpHeaders.SET_COOKIE, refreshToken)
                 .body(TokenResponseDto.builder()
                         .code(200)
                         .message("로그인이 완료되었습니다.")
                         .accessToken(accessToken)
                         .build());
     }
+
+    /*
+    @GetMapping("/refresh")
+    public ResponseEntity<ResultDto> refreshToken(HttpServletRequest request) {
+        String refreshToken = request.getHeader("Cookie");
+        signInUserUseCase.reissueRefreshToken(refreshToken);
+    }
+     */
+
+
 }

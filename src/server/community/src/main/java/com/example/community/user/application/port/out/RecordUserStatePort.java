@@ -6,4 +6,6 @@ public interface RecordUserStatePort {
     void saveUser(User user);
 
     void updateRefreshToken(Integer userId, String refreshToken);
+
+    String reissueRefreshToken(Integer userId);
 }
