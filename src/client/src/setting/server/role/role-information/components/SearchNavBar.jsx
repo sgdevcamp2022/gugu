@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useSetRecoilState } from 'recoil';
 
 import SearchBar from '../../../../../common/components/SearchBar';
-import isRoleSettingModeState from '../../../recoil/atom/isRoleSettingModeState';
+import isRoleSettingModeState from '../../../../../recoil/atom/setting/server/isRoleSettingModeState';
 
 const Container = styled.div`
   width: 100%;

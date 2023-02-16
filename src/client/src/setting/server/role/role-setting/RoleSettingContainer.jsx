@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 
-import roleSettingTypeState from '../../recoil/atom/roleSettingTypeState';
+import roleSettingTypeState from '../../../../recoil/atom/setting/server/roleSettingTypeState';
 import ROLE_SETTING_TYPES from '../../../constant/ROLE_SETTING_TYPES';
 
 import SideBar from './components/SideBar';

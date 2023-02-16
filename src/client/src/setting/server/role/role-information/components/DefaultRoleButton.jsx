@@ -3,8 +3,8 @@ import { BsFillPeopleFill } from 'react-icons/bs';
 import { BiChevronRight } from 'react-icons/bi';
 import styled from 'styled-components';
 import { useSetRecoilState } from 'recoil';
-import isRoleSettingModeState from '../../../recoil/atom/isRoleSettingModeState';
-import selectedRoleState from '../../../recoil/atom/selectedRoleState';
+import isRoleSettingModeState from '../../../../../recoil/atom/setting/server/isRoleSettingModeState';
+import selectedRoleState from '../../../../../recoil/atom/setting/server/selectedRoleState';
 import EVERYONE from '../../../../constant/EVERYONE';
 
 const Container = styled.div`

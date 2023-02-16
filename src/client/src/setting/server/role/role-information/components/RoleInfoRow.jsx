@@ -5,10 +5,10 @@ import { useSetRecoilState } from 'recoil';
 import { RiShieldUserFill, RiPencilFill, RiMoreFill } from 'react-icons/ri';
 import { BsPersonFill } from 'react-icons/bs';
 
-import isRoleSettingModeState from '../../../recoil/atom/isRoleSettingModeState';
-import selectedRoleState from '../../../recoil/atom/selectedRoleState';
+import isRoleSettingModeState from '../../../../../recoil/atom/setting/server/isRoleSettingModeState';
+import selectedRoleState from '../../../../../recoil/atom/setting/server/selectedRoleState';
 import RoleDeleteBtn from '../../common/components/RoleDeleteBtn';
-import roleSettingTypeState from '../../../recoil/atom/roleSettingTypeState';
+import roleSettingTypeState from '../../../../../recoil/atom/setting/server/roleSettingTypeState';
 import ROLE_SETTING_TYPES from '../../../../constant/ROLE_SETTING_TYPES';
 
 const Container = styled.div`
