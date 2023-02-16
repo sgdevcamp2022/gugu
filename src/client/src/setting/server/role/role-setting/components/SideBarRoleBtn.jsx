@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import { PropTypes } from 'prop-types';
 import { useRecoilState } from 'recoil';
-import selectedRoleState from '../../../recoil/atom/selectedRoleState';
+import selectedRoleState from '../../../../../recoil/setting/server/selectedRoleState';
 
 const RoleButton = styled.div`
   height: 22px;
