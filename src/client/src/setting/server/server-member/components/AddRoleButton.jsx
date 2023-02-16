@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { IoMdAdd } from 'react-icons/io';
 import styled from 'styled-components';
-import SearchBar from '../../../common/components/SearchBar';
-import useOutsideClick from '../../../hooks/useOutsideClick';
+import SearchBar from '../../../../common/components/SearchBar';
+import useOutsideClick from '../../../../hooks/useOutsideClick';
 
 const Container = styled.div`
   width: 14px;
@@ -55,7 +55,8 @@ const Role = styled.div`
   border-radius: 3px;
 
   &:hover {
-    background-color: ${(props) => props.theme.color.inputHoverBg};
+    background-color: ${(props) => props.theme.color.hoverBg};
+    color: ${(props) => props.theme.color.primaryText};
   }
 
   div {
@@ -90,7 +91,7 @@ function AddRoleButton() {
       {isRoleModalOpen && (
         <RoleModal ref={roleModalRef}>
           <SearchBar
-            sx={{ margin: '1px', padding: '8px' }}
+            inputStyle={{ margin: '1px', padding: '8px' }}
             fontSize="16px"
             placeholder="역할"
           />

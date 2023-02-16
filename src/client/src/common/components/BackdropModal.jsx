@@ -5,6 +5,8 @@ import { PropTypes } from 'prop-types';
 import useOutsideClick from '../../hooks/useOutsideClick';
 
 const ModalSection = styled.div`
+  width: 440px;
+
   position: relative;
   z-index: 1;
 

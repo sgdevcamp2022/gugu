@@ -1,19 +1,25 @@
 const Theme = {
   color: {
-    primaryBg: '#3a3c41',
-    secondaryBg: '#333439',
-    activeBg: '#2E3136',
+    primaryBg: '#36393F',
+    secondaryBg: '#2F3136',
+
+    hoverBg: '#4F545C66',
+    selectedBg: '#4f545c99',
 
     primaryText: '#ffffff',
     secondaryText: '#B9BBBE',
+    hoverText: '#dcddde',
 
     red: '#ED4245',
-    blue: '#4751C4',
+    darkRed: '#A12D2F',
+    blue: '#5865F2',
+    darkBlue: '#4745C4',
+    lightBlue: 'rgb(88, 101, 242)',
+    green: '#3ba55c',
 
     border: 'rgba(184, 186, 189, 0.25)',
 
     inputBg: '#202225',
-    inputHoverBg: 'rgba(79, 84, 92, 0.4)',
 
     darkModalBg: '#18191C',
   },
@@ -22,6 +28,9 @@ const Theme = {
   },
   boxShadow: {
     dark: 'rgba(32, 34, 37, 0.6) 0 0 0 1px, rgba(0, 0, 0, 0.298) 0 1px 5px 0',
+  },
+  transition: {
+    hover: 'background-color 0.17s ease, color 0.17s ease',
   },
 };
 

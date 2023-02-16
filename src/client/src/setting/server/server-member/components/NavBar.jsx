@@ -2,12 +2,12 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { HiChevronDown } from 'react-icons/hi';
 import { AiFillCheckCircle } from 'react-icons/ai';
-import useOutsideClick from '../../../hooks/useOutsideClick';
-import SearchBar from '../../../common/components/SearchBar';
+import useOutsideClick from '../../../../hooks/useOutsideClick';
+import SearchBar from '../../../../common/components/SearchBar';
 
 const Container = styled.div`
   width: 100%;
-  margin: 30px 0;
+  margin-bottom: 30px;
 
   display: flex;
   justify-content: space-between;
@@ -111,7 +111,7 @@ function NavBar() {
           {isRoleModalOpen && (
             <RoleModal ref={roleModalRef}>
               <SearchBar
-                sx={{ margin: '1px', padding: '8px' }}
+                inputStyle={{ margin: '1px', padding: '8px' }}
                 fontSize="16px"
                 placeholder="역할 검색"
               />
@@ -127,7 +127,7 @@ function NavBar() {
           )}
         </RoleBox>
         <SearchBar
-          sx={{ margin: '1px', padding: '4px' }}
+          inputStyle={{ margin: '1px', padding: '4px' }}
           fontSize="14px"
           placeholder="검색하기"
         />

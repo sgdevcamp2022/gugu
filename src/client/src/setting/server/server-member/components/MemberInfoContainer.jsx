@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import MemberRoleBtn from './MemberRoleBtn';
 import AddRoleButton from './AddRoleButton';
-import MemberManageBtn from './MemberManageBtn';
+import MemberMoreBtn from './MemberMoreBtn';
 
 const Container = styled.div`
   height: 40px;
@@ -77,7 +77,7 @@ function MemberInfoContainer({ src, name, id, roleArray }) {
         ))}
         <AddRoleButton />
       </RoleContainer>
-      <MemberManageBtn isInfoHover={isInfoHover} name={name} />
+      <MemberMoreBtn isInfoHover={isInfoHover} name={name} />
     </Container>
   );
 }

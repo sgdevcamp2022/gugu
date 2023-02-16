@@ -6,11 +6,11 @@ import { server } from './constant/server';
 import { channel } from './constant/channel';
 import { user } from './constant/user';
 import { notFound } from './constant/notFound';
-// import Content from './Content';
+
 import SideBar from './SideBar';
 import FullScreenBox from '../layout/FullScreenBox';
 import SettingCloseButton from './SettingCloseButton';
-import ServerMemberContainer from './server-member/ServerMemberContainer';
+import ServerRoleContainer from './server/role/ServerRoleContainer';
 
 const Box = styled(FullScreenBox)`
   display: flex;
@@ -20,7 +20,7 @@ const Box = styled(FullScreenBox)`
 const ContentContainer = styled.div`
   width: 80%;
   padding: 60px 40px;
-  max-width: 660px;
+  max-width: 740px;
 
   display: grid;
   grid-template-columns: auto 80px;
@@ -44,7 +44,7 @@ function SettingContainer({ settingType }) {
     <Box>
       <SideBar settingTypes={settingSelector(settingType)} />
       <ContentContainer>
-        <ServerMemberContainer />
+        <ServerRoleContainer />
         <SettingCloseButton />
       </ContentContainer>
     </Box>

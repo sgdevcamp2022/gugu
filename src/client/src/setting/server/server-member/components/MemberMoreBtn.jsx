@@ -1,9 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { AiOutlineMore } from 'react-icons/ai';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
-import useOutsideClick from '../../../hooks/useOutsideClick';
-import BackdropModal from '../../../common/components/BackdropModal';
+import useOutsideClick from '../../../../hooks/useOutsideClick';
+import BackdropModal from '../../../../common/components/BackdropModal';
+import {
+  DarkModalButton,
+  DarkModalContainer,
+} from '../../../../layout/DarkModal';
 
 const Container = styled.div`
   margin-top: 5px;
@@ -23,47 +27,15 @@ const Icon = styled(AiOutlineMore)`
   }
 `;
 
-const ManageModal = styled.div`
-  width: 180px;
-  padding: 6px 8px;
-
-  visibility: visible;
-
+const DarkModal = styled(DarkModalContainer)`
   position: absolute;
   z-index: 1;
   top: calc(100% + 8px);
   right: 0;
-
-  background-color: ${(props) => props.theme.color.darkModalBg};
-  border-radius: 3px;
-`;
-
-const ManageButton = styled.div`
-  margin: 2px 0;
-  padding: 6px 8px;
-  font-size: 14px;
-  color: ${(props) => props.theme.color.secondaryText};
-  border-radius: 3px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${(props) => props.theme.color.blue};
-    color: ${(props) => props.theme.color.primaryText};
-  }
-
-  ${(props) =>
-    props.strict &&
-    css`
-      color: ${props.theme.color.red};
-
-      &:hover {
-        background-color: ${props.theme.color.red};
-      }
-    `}
 `;
 
 const ModalLayout = styled.div`
-  width: 440px;
+  width: 100%;
 
   .title {
     padding: 16px;
@@ -108,10 +80,14 @@ const ModalLayout = styled.div`
 
   .submit {
     background-color: ${(props) => props.theme.color.red};
+
+    &:hover {
+      background-color: ${(props) => props.theme.color.darkRed};
+    }
   }
 `;
 
-function MemberManageBtn({ isInfoHover, name }) {
+function MemberMoreBtn({ isInfoHover, name }) {
   const manageModalRef = useRef();
   const [isManageModalOpen, setIsManageModalOpen] = useState(false);
   const [isThrowModalOpen, setIsThrowModalOpen] = useState(false);
@@ -130,8 +106,8 @@ function MemberManageBtn({ isInfoHover, name }) {
     >
       <Icon />
       {isManageModalOpen && (
-        <ManageModal ref={manageModalRef}>
-          <ManageButton strict>
+        <DarkModal ref={manageModalRef}>
+          <DarkModalButton strict>
             <p
               role="presentation"
               onClick={() => {
@@ -167,8 +143,8 @@ function MemberManageBtn({ isInfoHover, name }) {
                 </div>
               </ModalLayout>
             </BackdropModal>
-          </ManageButton>
-          <ManageButton>
+          </DarkModalButton>
+          <DarkModalButton strict>
             <p
               role="presentation"
               onClick={() => {
@@ -203,21 +179,21 @@ function MemberManageBtn({ isInfoHover, name }) {
                 </div>
               </ModalLayout>
             </BackdropModal>
-          </ManageButton>
-        </ManageModal>
+          </DarkModalButton>
+        </DarkModal>
       )}
     </Container>
   );
 }
 
-MemberManageBtn.propTypes = {
+MemberMoreBtn.propTypes = {
   isInfoHover: PropTypes.bool,
   name: PropTypes.string,
 };
 
-MemberManageBtn.defaultProps = {
+MemberMoreBtn.defaultProps = {
   isInfoHover: false,
   name: '',
 };
 
-export default MemberManageBtn;
+export default MemberMoreBtn;
