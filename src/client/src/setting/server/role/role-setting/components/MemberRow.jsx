@@ -85,4 +85,4 @@ MemberRow.defaultProps = {
   id: '',
 };
 
-export default MemberRow;
+export default React.memo(MemberRow);

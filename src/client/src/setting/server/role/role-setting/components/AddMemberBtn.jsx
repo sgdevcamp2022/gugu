@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 import { RiShieldUserFill } from 'react-icons/ri';
-import { BsCheck2 } from 'react-icons/bs';
 
 import BackdropModal from '../../../../../common/components/BackdropModal';
 import selectedRoleState from '../../../recoil/atom/selectedRoleState';
 import SearchBar from '../../../../../common/components/SearchBar';
 import Label from '../layout/Label';
+import AddMemberRow from './AddMemberRow';
 
 const Container = styled.div`
   position: relative;
@@ -27,6 +27,8 @@ const Button = styled.div`
 
   color: ${(props) => props.theme.color.primaryText};
   font-size: 14px;
+
+  cursor: pointer;
 `;
 
 const AddModal = styled.div`
@@ -74,62 +76,6 @@ const MemberList = styled.div`
   overflow-y: scroll;
 `;
 
-const AddMemberRow = styled.div`
-  padding: 8px 6px;
-
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border-radius: 3px;
-
-  &:hover {
-    background-color: ${(props) => props.theme.color.hoverBg};
-  }
-
-  .checkbox {
-    width: 18px;
-    height: 18px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: 1px solid ${(props) => props.theme.color.secondaryText};
-    border-radius: 3px;
-    font-size: 18px;
-
-    background-color: ${(props) => props.theme.color.blue};
-  }
-
-  .label {
-    padding-left: 16px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 14px;
-  }
-
-  .member-profile {
-    width: 24px;
-    height: 24px;
-    object-fit: cover;
-    border-radius: 1000px;
-  }
-
-  .member-name {
-    margin-left: 8px;
-    margin-right: 4px;
-    color: ${(props) => props.theme.color.primaryText};
-  }
-
-  .member-id {
-    margin-left: 4px;
-    color: ${(props) => props.theme.color.secondaryText};
-  }
-`;
-
 const BottomBar = styled.div`
   height: 38px;
   padding: 16px;
@@ -148,6 +94,7 @@ const BottomBar = styled.div`
     align-items: center;
     color: ${(props) => props.theme.color.primaryText};
     text-align: center;
+    cursor: pointer;
   }
 
   .cancel-button {
@@ -216,20 +163,7 @@ function AddMemberBtn() {
           <MemberList>
             <Label>멤버</Label>
 
-            <AddMemberRow>
-              <div className="checkbox">
-                <BsCheck2 />
-              </div>
-              <div className="label">
-                <img
-                  className="member-profile"
-                  src="https://image.petmd.com/files/styles/863x625/public/2023-01/toy-poodle.jpg"
-                  alt="member-profile"
-                />
-                <span className="member-name">이윤성</span>
-                <span className="member-id">이윤성#1111</span>
-              </div>
-            </AddMemberRow>
+            <AddMemberRow />
           </MemberList>
 
           <BottomBar>
