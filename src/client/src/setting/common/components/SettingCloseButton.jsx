@@ -28,4 +28,4 @@ function SettingCloseButton() {
 )
 }
 
-export default SettingCloseButton;
+export default React.memo(SettingCloseButton);
