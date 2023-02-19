@@ -9,7 +9,7 @@ import NOTFOUND from './constant/NOTFOUND';
 
 import SideBar from './SideBar';
 import FullScreenBox from '../layout/FullScreenBox';
-import SettingCloseButton from './SettingCloseButton';
+import SettingCloseButton from './common/components/SettingCloseButton';
 import settingMainContentState from '../recoil/setting/common/settingMainContentState';
 import settingTypeState from '../recoil/setting/common/settingTypeState';
 
