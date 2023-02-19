@@ -1,6 +1,7 @@
 /* eslint-disable */
 import ServerRoleContainer from '../server/role/ServerRoleContainer';
-import ServerMemberContainer from '../server/server-member/ServerMemberContainer';
+import ServerMemberContainer from '../server/member/ServerMemberContainer';
+import ServerInvitationContainer from '../server/invitation/ServerInvitationContainer';
 
 const SERVERS = 'SERVER';
 
@@ -29,7 +30,7 @@ const SIDEBAR = {
         },
         {
           title: '초대',
-          content: <div>초대</div>
+          content: <ServerInvitationContainer />,
         },
       ],
     },
