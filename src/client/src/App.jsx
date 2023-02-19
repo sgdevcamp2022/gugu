@@ -1,16 +1,39 @@
 import React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import { useRecoilValue } from 'recoil';
 
-// import ServerContainer from './server/ServerContainer';
+// import ServerContainer from './SERVER/ServerContainer';
 import SettingContainer from './setting/SettingContainer';
 import Theme from './styles/Theme';
+import privatePageTypeState from './recoil/common/privatePageTypeState';
+import PRIVATE_PAGE_TYPES from './common/constant/PRIVATE_PAGE_TYPES';
+
+function PrivateRouter() {
+  const privatePageType = useRecoilValue(privatePageTypeState)
+
+  switch (privatePageType) {
+    case PRIVATE_PAGE_TYPES.MAIN:
+      return <div>main page</div>
+    case PRIVATE_PAGE_TYPES.SETTING:
+      return <SettingContainer />
+    default:
+      return <div>default</div>
+  }
+}
+
+function PublicRouter() {}
 
 function AppRouter() {
-  return (
-    <div className="App">
-      <SettingContainer />
-    </div>
-  );
+  const isLogIn = !! localStorage.getItem('accessToken');
+
+  switch (isLogIn) {
+    case true:
+      return <PrivateRouter />
+    case false:
+      return <PublicRouter />
+    default:
+      return <PublicRouter />
+  }
 }
 
 function App() {
