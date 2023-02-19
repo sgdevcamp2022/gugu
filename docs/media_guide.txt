@@ -1,0 +1,7 @@
+### 1. mac_환경
+openjdk 17 버전 다운로드
+sh ../deploy/install_java_mac.sh
+
+### 2. 서버 빌드 및 실행
+cd ../deploy
+sh media_start.sh

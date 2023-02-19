@@ -19,7 +19,7 @@ public class SignalingServiceImpl implements SignalingService {
     private final RoomService roomService;
     private final Parser parser;
     @Override
-    public Map displayMainPage(final Long id, final String uuid) {
+    public Map<String, Object> displayMainPage(final Long id, final String uuid) {
         Map<String, Object> data = new HashMap<>();
         data.put("id", id);
         data.put("rooms", roomService.getRooms());
@@ -33,7 +33,7 @@ public class SignalingServiceImpl implements SignalingService {
     }
 
     @Override
-    public Map processRoomSelection(final String sid, final String uuid, final BindingResult bindingResult) {
+    public Map<String, Object> processRoomSelection(final String sid, final String uuid, final BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             // simplified version, no errors processing
             log.info("aa");
@@ -45,7 +45,7 @@ public class SignalingServiceImpl implements SignalingService {
     }
 
     @Override
-    public Map processRoomExit(final String sid, final String uuid) {
+    public Map<String, Object> processRoomExit(final String sid, final String uuid) {
         if(sid != null && uuid != null) {
             log.debug("User {} has left Room #{}", uuid, sid);
             // implement any logic you need
@@ -54,7 +54,7 @@ public class SignalingServiceImpl implements SignalingService {
     }
 
     @Override
-    public Map displaySelectedRoom(String sid, String uuid) {
+    public Map<String, Object> displaySelectedRoom(String sid, String uuid) {
         // redirect to main page if provided data is invalid
         Map<String,Object> data = new HashMap();
         if (parser.parseId(sid).isPresent()) {

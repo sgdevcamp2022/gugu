@@ -2,10 +2,12 @@ package com.example.community.user.adapter.out.persistence;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
-public class TokenResponse {
-    private String accessToken;
-    private String tokenType;
+@NoArgsConstructor
+public class LoadSignInUserDto {
+    private String email;
+    private String password;
 }
