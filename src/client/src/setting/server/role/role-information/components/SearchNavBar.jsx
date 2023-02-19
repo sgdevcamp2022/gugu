@@ -61,4 +61,4 @@ function SearchNavBar() {
   );
 }
 
-export default SearchNavBar;
+export default React.memo(SearchNavBar);

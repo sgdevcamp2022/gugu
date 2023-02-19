@@ -6,9 +6,9 @@ const Box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  
-  color: ${props => props.theme.color.secondaryText};
+  align-items: flex-end;
+
+  color: ${(props) => props.theme.color.secondaryText};
 `;
 
 const Button = styled(SlClose)`
@@ -25,7 +25,7 @@ function SettingCloseButton() {
       <Button />
       <Text>ESC</Text>
     </Box>
-)
+  );
 }
 
 export default React.memo(SettingCloseButton);

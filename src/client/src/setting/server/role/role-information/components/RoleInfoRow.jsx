@@ -206,4 +206,4 @@ RoleInfoRow.defaultProps = {
   numMember: 0,
 };
 
-export default RoleInfoRow;
+export default React.memo(RoleInfoRow);
