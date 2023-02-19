@@ -10,4 +10,6 @@ public interface SignInUserUseCase {
     Integer loadUserId(String email);
 
     TokenDto reissueToken(String refreshToken);
+
+    boolean signOutUser(String refreshToken);
 }

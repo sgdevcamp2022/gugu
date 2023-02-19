@@ -67,6 +67,18 @@ public class UserController {
                         .build());
     }
 
+    @GetMapping("/signout")
+    public ResponseEntity<ResultDto> signOutUser(HttpServletRequest request) {
+        String refreshToken = request.getHeader("Cookie");
+        signInUserUseCase.signOutUser(refreshToken);
+
+        return ResponseEntity.ok()
+                .body(ResultDto.builder()
+                        .code(200)
+                        .message("로그아웃되었습니다.")
+                        .build());
+    }
+
     @GetMapping("/refresh")
     public ResponseEntity<TokenResponseDto> refreshToken(HttpServletRequest request) {
         String refreshToken = request.getHeader("Cookie");

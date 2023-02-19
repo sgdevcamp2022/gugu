@@ -7,5 +7,5 @@ public interface RecordUserStatePort {
 
     void updateRefreshToken(Integer userId, String refreshToken);
 
-    String reissueRefreshToken(Integer userId);
+    void removeRefreshToken(Integer userId);
 }

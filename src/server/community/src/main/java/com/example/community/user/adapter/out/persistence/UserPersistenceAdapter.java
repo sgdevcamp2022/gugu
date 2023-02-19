@@ -4,7 +4,6 @@ import com.example.community.user.application.port.out.LoadUserStatePort;
 import com.example.community.user.application.port.out.RecordUserStatePort;
 import com.example.community.user.domain.User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityNotFoundException;
@@ -30,8 +29,11 @@ public class UserPersistenceAdapter implements RecordUserStatePort, LoadUserStat
     }
 
     @Override
-    public String reissueRefreshToken(Integer userId) {
-        return null;
+    public void removeRefreshToken(Integer userId) {
+        UserJpaEntity userJpaEntity = userRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException("존재하지 않는 계정입니다."));
+        userJpaEntity.setRefresh_token(null);
+        userRepository.save(userJpaEntity);
     }
 
     @Override
