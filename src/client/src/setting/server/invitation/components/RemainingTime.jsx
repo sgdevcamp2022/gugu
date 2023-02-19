@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   text-align: right;
-`
+`;
 
 function RemainingTime({ invitationEndTime }) {
   const [date, setDate] = useState(31 - new Date().getDate());
@@ -14,7 +14,12 @@ function RemainingTime({ invitationEndTime }) {
 
   useEffect(() => {
     const calculateTime = setInterval(() => {
-      setDate(31 - new Date().getDate());
+      setDate(
+        Math.floor(
+          (invitationEndTime.getTime() - new Date().getTime()) /
+            (1000 * 60 * 60 * 24)
+        )
+      );
       setHour(23 - new Date().getHours());
       setMinute(59 - new Date().getMinutes());
       setSecond(59 - new Date().getSeconds());
@@ -24,20 +29,19 @@ function RemainingTime({ invitationEndTime }) {
 
   return (
     <Container className="remaining-time text-align-right">
-      {date < 10 ? `0${date}` : date}:
-      {hour < 10 ? `0${hour}` : hour}:
+      {date < 10 ? `0${date}` : date}:{hour < 10 ? `0${hour}` : hour}:
       {minute < 10 ? `0${minute}` : minute}:
       {second < 10 ? `0${second}` : second}
     </Container>
-  )
+  );
 }
 
 RemainingTime.propTypes = {
   invitationEndTime: PropTypes.object, // eslint-disable-line
-}
+};
 
 RemainingTime.defaultProps = {
-  invitationEndTime: new Date()
-}
+  invitationEndTime: new Date(),
+};
 
 export default RemainingTime;
