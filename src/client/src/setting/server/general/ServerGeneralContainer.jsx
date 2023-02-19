@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Content from '../../common/components/Content';
 import Heading3 from '../../common/components/Heading3';
-import ImageContainer from './general/ImageContainer';
+import ImageContainer from './components/ImageContainer';
 import Label from '../role/role-setting/layout/Label';
 
 const Container = styled.div`

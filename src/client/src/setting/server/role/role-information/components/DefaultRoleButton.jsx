@@ -90,4 +90,4 @@ function DefaultRoleButton() {
   );
 }
 
-export default DefaultRoleButton;
+export default React.memo(DefaultRoleButton);
