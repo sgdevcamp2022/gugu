@@ -64,6 +64,14 @@ public class AccountSignInService implements SignInUserUseCase {
         return true;
     }
 
+    @Override
+    public String loadUsername(String refreshToken) {
+        Integer userId = jwtTokenProvider.parseJwtToken(refreshToken);
+
+        String username = loadUserStatePort.loadUsernameByUserId(userId);
+        return username;
+    }
+
     private void checkPassword(String password, String encodedPassword) {
         boolean isMatch = passwordEncoder.matches(password, encodedPassword);
         if (!isMatch) {

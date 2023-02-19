@@ -12,4 +12,6 @@ public interface SignInUserUseCase {
     TokenDto reissueToken(String refreshToken);
 
     boolean signOutUser(String refreshToken);
+
+    String loadUsername(String refreshToken);
 }

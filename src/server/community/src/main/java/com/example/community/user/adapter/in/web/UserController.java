@@ -1,9 +1,6 @@
 package com.example.community.user.adapter.in.web;
 
-import com.example.community.user.adapter.out.persistence.SignInRequestDto;
-import com.example.community.user.adapter.out.persistence.SignUpRequestDto;
-import com.example.community.user.adapter.out.persistence.TokenDto;
-import com.example.community.user.adapter.out.persistence.TokenResponseDto;
+import com.example.community.user.adapter.out.persistence.*;
 import com.example.community.user.application.port.in.RecordUserUseCase;
 import com.example.community.user.application.port.in.SignInCommand;
 import com.example.community.user.application.port.in.SignInUserUseCase;
@@ -45,7 +42,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<TokenResponseDto> signInUser(@RequestBody SignInRequestDto signInUser) {
+    public ResponseEntity<UserResponseDto> signInUser(@RequestBody SignInRequestDto signInUser) {
         SignInCommand command = new SignInCommand(
                 signInUser.getEmail(),
                 signInUser.getPassword());
@@ -60,10 +57,10 @@ public class UserController {
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE, refreshToken)
-                .body(TokenResponseDto.builder()
+                .body(UserResponseDto.builder()
                         .code(200)
                         .message("로그인이 완료되었습니다.")
-                        .accessToken(accessToken)
+                        .info(accessToken)
                         .build());
     }
 
@@ -80,18 +77,29 @@ public class UserController {
     }
 
     @GetMapping("/refresh")
-    public ResponseEntity<TokenResponseDto> refreshToken(HttpServletRequest request) {
+    public ResponseEntity<UserResponseDto> refreshToken(HttpServletRequest request) {
         String refreshToken = request.getHeader("Cookie");
 
         TokenDto tokenDto = signInUserUseCase.reissueToken(refreshToken);
 
-
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE, tokenDto.getRefreshToken())
-                .body(TokenResponseDto.builder()
+                .body(UserResponseDto.builder()
                         .code(200)
                         .message("토큰 재발급이 완료되었습니다.")
-                        .accessToken(tokenDto.getAccessToken())
+                        .info(tokenDto.getAccessToken())
+                        .build());
+    }
+
+    @GetMapping("/user-info")
+    public ResponseEntity<UserResponseDto> loadUsername(HttpServletRequest request) {
+        String refreshToken = request.getHeader("Cookie");
+        String username = signInUserUseCase.loadUsername(refreshToken);
+        return ResponseEntity.ok()
+                .body(UserResponseDto.builder()
+                        .code(200)
+                        .message("사용자 정보를 불러왔습니다.")
+                        .info(username)
                         .build());
     }
 }

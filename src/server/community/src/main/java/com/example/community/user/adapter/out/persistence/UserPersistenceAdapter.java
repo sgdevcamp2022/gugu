@@ -69,4 +69,10 @@ public class UserPersistenceAdapter implements RecordUserStatePort, LoadUserStat
         String refreshToken = userRepository.findById(userId).get().getRefresh_token();
         return refreshToken;
     }
+
+    @Override
+    public String loadUsernameByUserId(Integer userId) {
+        String username = userRepository.findById(userId).get().getUsername();
+        return username;
+    }
 }
