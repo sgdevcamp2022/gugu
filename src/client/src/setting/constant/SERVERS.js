@@ -2,6 +2,7 @@
 import ServerRoleContainer from '../server/role/ServerRoleContainer';
 import ServerMemberContainer from '../server/member/ServerMemberContainer';
 import ServerInvitationContainer from '../server/invitation/ServerInvitationContainer';
+import ServerGeneralContainer from '../server/general/ServerGeneralContainer';
 
 const SERVERS = 'SERVER';
 
@@ -13,11 +14,11 @@ const SIDEBAR = {
       list: [
         {
           title: '일반',
-          content: <div>일반</div>,
+          content: <ServerGeneralContainer />,
         },
         {
           title: '역할',
-          content: <ServerRoleContainer />
+          content: <ServerRoleContainer />,
         },
       ],
     },
@@ -39,4 +40,4 @@ const SIDEBAR = {
 
 Object.freeze(SIDEBAR);
 
-export default {SERVER: SERVERS, SIDEBAR};
+export default { SERVER: SERVERS, SIDEBAR };
