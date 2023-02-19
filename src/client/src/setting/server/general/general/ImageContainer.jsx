@@ -24,9 +24,30 @@ const ImageUploader = styled.div`
 
   position: relative;
 
+  box-shadow: rgba(0, 0, 0, 0.24) 0 8px 16px 0;
+
+  .image-uploader-acronym {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    z-index: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 40px;
+    color: ${(props) => props.theme.color.primaryText};
+  }
+
+  :hover .image-uploader-acronym {
+    visibility: hidden;
+  }
+
   .image-uploader-input {
     border-radius: 1000px;
-    z-index: 2;
+    z-index: 3;
   }
 
   .image-uploader-hint {
@@ -48,7 +69,7 @@ const ImageUploader = styled.div`
     visibility: visible;
     background-color: rgba(0, 0, 0, 0.6);
     color: ${(props) => props.theme.color.primaryText};
-    z-index: 1;
+    z-index: 2;
   }
 `;
 
@@ -109,14 +130,21 @@ const ImageBtn = styled.div`
 `;
 
 function ImageContainer() {
-  const example =
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Golde33443.jpg/220px-Golde33443.jpg';
+  // const example =
+  //   'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Golde33443.jpg/220px-Golde33443.jpg';
+
+  const example = '';
 
   const [image, setImage] = useState('');
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleImageUpload = (e) => {
     setImage(e.target.files[0]);
+  };
+
+  const handleImageRemove = () => {
+    setImage('');
+    setImagePreview(null);
   };
 
   useEffect(() => {
@@ -127,9 +155,9 @@ function ImageContainer() {
       setImagePreview(example);
     };
 
+    if (!example || example === '') return;
     loadThumbnail();
-    console.log(image);
-  }, []);
+  }, [example]);
 
   useEffect(() => {
     if (!image || image === '') {
@@ -151,6 +179,7 @@ function ImageContainer() {
             backgroundImage: `url(${imagePreview})`,
           }}
         >
+          {!image && <div className="image-uploader-acronym">G</div>}
           <HiddenFileInput
             className="image-uploader-input"
             type="file"
@@ -159,7 +188,7 @@ function ImageContainer() {
           />
           <div className="image-uploader-hint">아이콘 변경</div>
         </ImageUploader>
-        <ImageRemover>제거하기</ImageRemover>
+        <ImageRemover onClick={handleImageRemove}>제거하기</ImageRemover>
       </div>
       <div className="image-right-box">
         <Description>서버 이미지 해상도는 최소 512x512를 추천해요.</Description>
