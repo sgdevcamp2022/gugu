@@ -42,17 +42,17 @@ const Seperator = styled.hr`
 
 const Category = styled.div``;
 
-export default function SideBar({ sidebar }) {
+function SideBar({ sidebar }) {
   const setMainContent = useSetRecoilState(settingMainContentState);
   return (
     <OptionList>
       <SettingType>{sidebar.name}</SettingType>
       {sidebar.categories.map((category) => (
-        <Category>
+        <Category key={category.title}>
           <OptionTitle>{category.title}</OptionTitle>
           <ul>
             {category.list.map((e) => (
-              <Item onClick={() => {setMainContent(e.content)}}>{e.title}</Item>
+              <Item key={e.title} onClick={() => {setMainContent(e.content)}}>{e.title}</Item>
             ))}
           </ul>
           <Seperator />
@@ -70,3 +70,5 @@ SideBar.propTypes = {
 SideBar.defaultProps = {
   sidebar: {},
 };
+
+export default React.memo(SideBar);
