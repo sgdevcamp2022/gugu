@@ -1,6 +1,6 @@
-export const channel = {
+const SIDEBAR = {
   name: '채널 명',
-  categorys: [
+  categories: [
     {
       title: '채널 설정',
       list: [
@@ -21,4 +21,6 @@ export const channel = {
   ],
 };
 
-export default channel;
+Object.freeze(SIDEBAR)
+
+export default { SIDEBAR };

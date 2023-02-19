@@ -1,0 +1,8 @@
+const PRIVATE_PAGE_TYPES = {
+  SETTING: 'SETTING',
+  MAIN: 'MAIN',
+}
+
+Object.freeze(PRIVATE_PAGE_TYPES);
+
+export default PRIVATE_PAGE_TYPES

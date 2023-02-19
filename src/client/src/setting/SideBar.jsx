@@ -1,12 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
+import { useSetRecoilState } from 'recoil';
+import settingMainContentState from '../recoil/setting/common/settingMainContentState';
 
 const OptionList = styled.div`
   width: 20%;
-  background-color: #333439;
+  max-width: 250px;
+  padding: 20px;
+  background-color: ${props => props.theme.color.secondaryBg};
   color: #b8babd;
-  padding: 1.2rem;
+  overflow-y: scroll;
 `;
 
 const SettingType = styled.div`
@@ -20,31 +24,35 @@ const OptionTitle = styled.div`
 `;
 
 const Item = styled.li`
+  padding: 6px 10px;
   list-style: none;
-  padding: 0.2rem 0;
   margin: 0.2rem 0;
   border-radius: 5px;
+  cursor: pointer;
+  
   &:hover {
-    background-color: #45484e;
-    color: #fff;
+    background-color: ${props => props.theme.color.hoverBg};
+    color: ${props => props.theme.color.hoverText};
   }
 `;
 
 const Seperator = styled.hr`
   border-color: rgba(184, 186, 189, 0.25);
 `;
+
 const Category = styled.div``;
 
-export default function SideBar({ settingTypes }) {
+export default function SideBar({ sidebar }) {
+  const setMainContent = useSetRecoilState(settingMainContentState);
   return (
     <OptionList>
-      <SettingType>{settingTypes.name}</SettingType>
-      {settingTypes.categorys.map((category) => (
+      <SettingType>{sidebar.name}</SettingType>
+      {sidebar.categories.map((category) => (
         <Category>
           <OptionTitle>{category.title}</OptionTitle>
           <ul>
             {category.list.map((e) => (
-              <Item>{e.title}</Item>
+              <Item onClick={() => {setMainContent(e.content)}}>{e.title}</Item>
             ))}
           </ul>
           <Seperator />
@@ -56,9 +64,9 @@ export default function SideBar({ settingTypes }) {
 
 SideBar.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  settingTypes: PropTypes.object,
+  sidebar: PropTypes.object,
 };
 
 SideBar.defaultProps = {
-  settingTypes: {},
+  sidebar: {},
 };

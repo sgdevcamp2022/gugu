@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useRecoilValue, useResetRecoilState, useSetRecoilState } from 'recoil';
-import isRoleSettingModeState from '../recoil/atom/isRoleSettingModeState';
+import isRoleSettingModeState from '../../../recoil/setting/server/isRoleSettingModeState';
 
 import RoleInfoContainer from './role-information/RoleInfoContainer';
 import RoleSettingContainer from './role-setting/RoleSettingContainer';
-import roleListState from '../recoil/atom/roleListState';
+import roleListState from '../../../recoil/setting/server/roleListState';
 
 function ServerRoleContainer() {
   const isRoleSettingMode = useRecoilValue(isRoleSettingModeState);

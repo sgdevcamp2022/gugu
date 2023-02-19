@@ -73,7 +73,7 @@ Object.freeze(CHAT);
 Object.freeze(VOICE);
 Object.freeze(ADVANCED);
 
-const PERMISSIONS = {
+const ROLE_PERMISSIONS = {
   GENERAL_KEY,
   GENERAL,
   MEMBERSHIP_KEY,
@@ -86,6 +86,6 @@ const PERMISSIONS = {
   ADVANCED,
 };
 
-Object.freeze(PERMISSIONS);
+Object.freeze(ROLE_PERMISSIONS);
 
-export default PERMISSIONS;
+export default ROLE_PERMISSIONS;

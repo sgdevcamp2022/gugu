@@ -9,7 +9,7 @@ import {
   DarkModalContainer,
 } from '../../../../../layout/DarkModal';
 import BackdropModal from '../../../../../common/components/BackdropModal';
-import selectedRoleState from '../../../recoil/atom/selectedRoleState';
+import selectedRoleState from '../../../../../recoil/setting/server/selectedRoleState';
 import useOutsideClick from '../../../../../hooks/useOutsideClick';
 
 const Container = styled.div`

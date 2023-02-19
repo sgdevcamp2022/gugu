@@ -1,6 +1,6 @@
-export const user = {
+const SIDEBAR = {
   name: '사용자 설정',
-  categorys: [
+  categories:  [
     {
       title: '사용자 설정',
       list: [
@@ -30,4 +30,5 @@ export const user = {
   ],
 };
 
-export default user;
+Object.freeze(SIDEBAR)
+export default {SIDEBAR};

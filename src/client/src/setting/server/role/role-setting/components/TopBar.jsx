@@ -4,10 +4,10 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { RiMoreFill } from 'react-icons/ri';
 
 import Heading3 from '../../../../common/components/Heading3';
-import selectedRoleState from '../../../recoil/atom/selectedRoleState';
+import selectedRoleState from '../../../../../recoil/setting/server/selectedRoleState';
 import RoleDeleteBtn from '../../common/components/RoleDeleteBtn';
 import ROLE_SETTING_TYPES from '../../../../constant/ROLE_SETTING_TYPES';
-import roleSettingTypeState from '../../../recoil/atom/roleSettingTypeState';
+import roleSettingTypeState from '../../../../../recoil/setting/server/roleSettingTypeState';
 import EVERYONE from '../../../../constant/EVERYONE';
 
 const Container = styled.div`

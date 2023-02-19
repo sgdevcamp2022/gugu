@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PropTypes } from 'prop-types';
+import { useRecoilValue } from 'recoil';
 
-import { server } from './constant/server';
-import { channel } from './constant/channel';
-import { user } from './constant/user';
-import { notFound } from './constant/notFound';
+import SERVER from './constant/SERVERS';
+import CHANNELS from './constant/CHANNELS';
+import USERS from './constant/USERS';
+import NOTFOUND from './constant/NOTFOUND';
 
 import SideBar from './SideBar';
 import FullScreenBox from '../layout/FullScreenBox';
 import SettingCloseButton from './SettingCloseButton';
-import ServerRoleContainer from './server/role/ServerRoleContainer';
+import settingMainContentState from '../recoil/setting/common/settingMainContentState';
+import settingTypeState from '../recoil/setting/common/settingTypeState';
 
 const Box = styled(FullScreenBox)`
   display: flex;
@@ -26,37 +27,31 @@ const ContentContainer = styled.div`
   grid-template-columns: auto 80px;
 `;
 
-const settingSelector = (type) => {
+const sidebarSelector = (type) => {
   switch (type) {
-    case 'server':
-      return server;
-    case 'channel':
-      return channel;
-    case 'user':
-      return user;
+    case 'SERVER':
+      return SERVER.SIDEBAR;
+    case 'CHANNEL':
+      return CHANNELS.SIDEBAR;
+    case 'USER':
+      return USERS.SIDEBAR;
     default:
-      return notFound;
+      return NOTFOUND.SIDEBAR;
   }
 };
 
-function SettingContainer({ settingType }) {
+function SettingContainer() {
+  const mainContent = useRecoilValue(settingMainContentState);
+  const settingType = useRecoilValue(settingTypeState);
   return (
     <Box>
-      <SideBar settingTypes={settingSelector(settingType)} />
+      <SideBar sidebar={sidebarSelector(settingType)} />
       <ContentContainer>
-        <ServerRoleContainer />
+        {mainContent}
         <SettingCloseButton />
       </ContentContainer>
     </Box>
   );
 }
-
-SettingContainer.propTypes = {
-  settingType: PropTypes.string,
-};
-
-SettingContainer.defaultProps = {
-  settingType: '',
-};
 
 export default SettingContainer;

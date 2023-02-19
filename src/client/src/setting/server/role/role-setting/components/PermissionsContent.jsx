@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Label from '../layout/Label';
 import SearchBar from '../../../../../common/components/SearchBar';
 import PermissionRowContainer from './PermissionRowContainer';
-import PERMISSIONS from '../constant/PERMISSIONS';
+import ROLE_PERMISSIONS from '../../../../constant/ROLE_PERMISSIONS';
 
 const Container = styled.div`
   width: 100%;
@@ -51,51 +51,51 @@ function PermissionsContent() {
           <ClearButton type="button">권한 지우기</ClearButton>
         </LabelContainer>
 
-        {PERMISSIONS.GENERAL_KEY.map((key) => (
+        {ROLE_PERMISSIONS.GENERAL_KEY.map((key) => (
           <PermissionRowContainer
             key={key}
-            title={PERMISSIONS.GENERAL[key].title}
-            note={PERMISSIONS.GENERAL[key].note}
+            title={ROLE_PERMISSIONS.GENERAL[key].title}
+            note={ROLE_PERMISSIONS.GENERAL[key].note}
           />
         ))}
 
         <Label>멤버쉽 권한</Label>
 
-        {PERMISSIONS.MEMBERSHIP_KEY.map((key) => (
+        {ROLE_PERMISSIONS.MEMBERSHIP_KEY.map((key) => (
           <PermissionRowContainer
             key={key}
-            title={PERMISSIONS.MEMBERSHIP[key].title}
-            note={PERMISSIONS.MEMBERSHIP[key].note}
+            title={ROLE_PERMISSIONS.MEMBERSHIP[key].title}
+            note={ROLE_PERMISSIONS.MEMBERSHIP[key].note}
           />
         ))}
 
         <Label>채팅 채널 권한</Label>
 
-        {PERMISSIONS.CHAT_KEY.map((key) => (
+        {ROLE_PERMISSIONS.CHAT_KEY.map((key) => (
           <PermissionRowContainer
             key={key}
-            title={PERMISSIONS.CHAT[key].title}
-            note={PERMISSIONS.CHAT[key].note}
+            title={ROLE_PERMISSIONS.CHAT[key].title}
+            note={ROLE_PERMISSIONS.CHAT[key].note}
           />
         ))}
 
         <Label>음성 채널 권한</Label>
 
-        {PERMISSIONS.VOICE_KEY.map((key) => (
+        {ROLE_PERMISSIONS.VOICE_KEY.map((key) => (
           <PermissionRowContainer
             key={key}
-            title={PERMISSIONS.VOICE[key].title}
-            note={PERMISSIONS.VOICE[key].note}
+            title={ROLE_PERMISSIONS.VOICE[key].title}
+            note={ROLE_PERMISSIONS.VOICE[key].note}
           />
         ))}
 
         <Label>고급 권한</Label>
 
-        {PERMISSIONS.ADVANCED_KEY.map((key) => (
+        {ROLE_PERMISSIONS.ADVANCED_KEY.map((key) => (
           <PermissionRowContainer
             key={key}
-            title={PERMISSIONS.ADVANCED[key].title}
-            note={PERMISSIONS.ADVANCED[key].note}
+            title={ROLE_PERMISSIONS.ADVANCED[key].title}
+            note={ROLE_PERMISSIONS.ADVANCED[key].note}
           />
         ))}
       </ScrollableBox>

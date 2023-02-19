@@ -1,6 +1,6 @@
-export const notFound = {
+const SIDEBAR = {
   name: 'Not Found',
-  categorys: [
+  categories: [
     {
       title: '',
       list: [
@@ -13,4 +13,5 @@ export const notFound = {
   ],
 };
 
-export default notFound;
+Object.freeze(SIDEBAR)
+export default {SIDEBAR};

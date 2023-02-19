@@ -5,8 +5,8 @@ import { MdArrowBack } from 'react-icons/md';
 import { AiOutlinePlus } from 'react-icons/ai';
 
 import SideBarRoleBtn from './SideBarRoleBtn';
-import isRoleSettingModeState from '../../../recoil/atom/isRoleSettingModeState';
-import roleListState from '../../../recoil/atom/roleListState';
+import isRoleSettingModeState from '../../../../../recoil/setting/server/isRoleSettingModeState';
+import roleListState from '../../../../../recoil/setting/server/roleListState';
 import EVERYONE from '../../../../constant/EVERYONE';
 
 const Container = styled.div`
