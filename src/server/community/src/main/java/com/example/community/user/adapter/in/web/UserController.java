@@ -98,7 +98,7 @@ public class UserController {
         return ResponseEntity.ok()
                 .body(UserResponseDto.builder()
                         .code(200)
-                        .message("사용자 정보를 불러왔습니다.")
+                        .message("사용자 이름을 불러왔습니다.")
                         .info(username)
                         .build());
     }

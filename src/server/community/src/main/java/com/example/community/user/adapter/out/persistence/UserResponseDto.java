@@ -7,8 +7,8 @@ import lombok.Getter;
 @Getter
 @Builder
 @AllArgsConstructor
-public class TokenResponseDto {
+public class UserResponseDto {
     private int code;
     private String message;
-    private String accessToken;
+    private String info;
 }
