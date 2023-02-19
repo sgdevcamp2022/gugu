@@ -1,5 +1,7 @@
 package com.example.community.user.application.port.in;
 
+import com.example.community.user.adapter.out.persistence.TokenDto;
+
 public interface SignInUserUseCase {
     boolean signIn(SignInCommand signInCommand);
 
@@ -7,5 +9,5 @@ public interface SignInUserUseCase {
 
     Integer loadUserId(String email);
 
-    // void reissueRefreshToken(String refreshToken);
+    TokenDto reissueToken(String refreshToken);
 }

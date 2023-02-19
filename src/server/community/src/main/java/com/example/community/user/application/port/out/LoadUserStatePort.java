@@ -12,4 +12,6 @@ public interface LoadUserStatePort {
     LoadSignInUserDto loadByEmail(String email);
 
     Integer loadUserIdByEmail(String email);
+
+    String loadRefreshTokenByUserId(Integer userId);
 }

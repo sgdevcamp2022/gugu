@@ -61,4 +61,10 @@ public class UserPersistenceAdapter implements RecordUserStatePort, LoadUserStat
     public Integer loadUserIdByEmail(String email) {
         return userRepository.findByEmail(email).get().getUser_id();
     }
+
+    @Override
+    public String loadRefreshTokenByUserId(Integer userId) {
+        String refreshToken = userRepository.findById(userId).get().getRefresh_token();
+        return refreshToken;
+    }
 }

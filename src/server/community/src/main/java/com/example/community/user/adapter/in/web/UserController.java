@@ -2,6 +2,7 @@ package com.example.community.user.adapter.in.web;
 
 import com.example.community.user.adapter.out.persistence.SignInRequestDto;
 import com.example.community.user.adapter.out.persistence.SignUpRequestDto;
+import com.example.community.user.adapter.out.persistence.TokenDto;
 import com.example.community.user.adapter.out.persistence.TokenResponseDto;
 import com.example.community.user.application.port.in.RecordUserUseCase;
 import com.example.community.user.application.port.in.SignInCommand;
@@ -11,11 +12,8 @@ import com.example.community.util.JwtTokenProvider;
 import com.example.community.util.ResultDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -69,13 +67,19 @@ public class UserController {
                         .build());
     }
 
-    /*
     @GetMapping("/refresh")
-    public ResponseEntity<ResultDto> refreshToken(HttpServletRequest request) {
+    public ResponseEntity<TokenResponseDto> refreshToken(HttpServletRequest request) {
         String refreshToken = request.getHeader("Cookie");
-        signInUserUseCase.reissueRefreshToken(refreshToken);
+
+        TokenDto tokenDto = signInUserUseCase.reissueToken(refreshToken);
+
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, tokenDto.getRefreshToken())
+                .body(TokenResponseDto.builder()
+                        .code(200)
+                        .message("토큰 재발급이 완료되었습니다.")
+                        .accessToken(tokenDto.getAccessToken())
+                        .build());
     }
-     */
-
-
 }

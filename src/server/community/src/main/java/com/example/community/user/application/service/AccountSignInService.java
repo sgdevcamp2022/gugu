@@ -1,7 +1,9 @@
 package com.example.community.user.application.service;
 
 import com.example.community.exception.BadCredentialsException;
+import com.example.community.exception.TokenValidationException;
 import com.example.community.user.adapter.out.persistence.LoadSignInUserDto;
+import com.example.community.user.adapter.out.persistence.TokenDto;
 import com.example.community.user.application.port.in.SignInCommand;
 import com.example.community.user.application.port.in.SignInUserUseCase;
 import com.example.community.user.application.port.out.LoadUserStatePort;
@@ -38,14 +40,21 @@ public class AccountSignInService implements SignInUserUseCase {
         return loadUserStatePort.loadUserIdByEmail(email);
     }
 
-    /*
     @Override
-    public void reissueToken(String refreshToken) {
-        Integer userId = Integer.valueOf((String) jwtTokenProvider.parseJwtToken(refreshToken).get("userId"));
-        recordUserStatePort.reissueRefreshToken(userId);
-    }
+    public TokenDto reissueToken(String refreshToken) {
+        Integer userId = jwtTokenProvider.parseJwtToken(refreshToken);
 
-     */
+        if (!refreshToken.equals(loadUserStatePort.loadRefreshTokenByUserId(userId))) {
+            throw new TokenValidationException("토큰이 유효하지 않습니다.");
+        }
+
+        String reissuedAccessToken = jwtTokenProvider.createAuthToken(userId);
+        String reissuedRefreshToken = jwtTokenProvider.createRefreshToken(userId);
+
+        recordUserStatePort.updateRefreshToken(userId, reissuedRefreshToken);
+        TokenDto token = new TokenDto(reissuedAccessToken, reissuedRefreshToken);
+        return token;
+    }
 
     private void checkPassword(String password, String encodedPassword) {
         boolean isMatch = passwordEncoder.matches(password, encodedPassword);
