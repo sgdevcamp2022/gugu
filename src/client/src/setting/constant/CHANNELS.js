@@ -2,6 +2,7 @@
 
 import ChannelGeneralContainer from '../channel/general/ChannelGeneralContainer';
 import ChannelPermissionContainer from '../channel/permission/ChannelPermissionContainer';
+import ChannelDeleteContainer from '../channel/delete/ChannelDeleteContainer';
 
 const SIDEBAR = {
   name: '채널 명',
@@ -24,7 +25,7 @@ const SIDEBAR = {
       list: [
         {
           title: '채널 삭제하기',
-          content: '',
+          content: <ChannelDeleteContainer />,
         },
       ],
     },
