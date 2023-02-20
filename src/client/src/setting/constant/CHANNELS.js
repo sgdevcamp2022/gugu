@@ -1,3 +1,7 @@
+/* eslint-disable */
+
+import ChannelGeneralContainer from '../channel/general/ChannelGeneralContainer';
+
 const SIDEBAR = {
   name: '채널 명',
   categories: [
@@ -6,14 +10,19 @@ const SIDEBAR = {
       list: [
         {
           title: '일반',
-          content: '',
+          content: <ChannelGeneralContainer />,
         },
         {
           title: '권한',
           content: '',
         },
+      ],
+    },
+    {
+      title: undefined,
+      list: [
         {
-          title: '초대',
+          title: '채널 삭제하기',
           content: '',
         },
       ],
@@ -21,6 +30,6 @@ const SIDEBAR = {
   ],
 };
 
-Object.freeze(SIDEBAR)
+Object.freeze(SIDEBAR);
 
 export default { SIDEBAR };

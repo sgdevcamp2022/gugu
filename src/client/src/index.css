@@ -20,3 +20,9 @@ button {
     outline: none;
     border: none;
 }
+
+textarea {
+    font-family: 'Apple SD Gothic Neo', sans-serif;
+    outline: none;
+    border: none;
+}
