@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { CgColorPicker } from 'react-icons/cg';
 import { ChromePicker } from 'react-color';
-import Label from '../layout/Label';
+import Label from '../../../../common/components/Label';
 import useOutsideClick from '../../../../../hooks/useOutsideClick';
 
 const ColorPickerContainer = styled.div`
@@ -165,6 +165,7 @@ function DisplayColor() {
           <ColorButtonRow>
             {LIGHT_COLORS.map((color) => (
               <button
+                key={color}
                 type="button"
                 style={{ backgroundColor: color }}
                 aria-label={color}
@@ -174,6 +175,7 @@ function DisplayColor() {
           <ColorButtonRow>
             {DARK_COLORS.map((color) => (
               <button
+                key={color}
                 type="button"
                 style={{ backgroundColor: color }}
                 aria-label={color}

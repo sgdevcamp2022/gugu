@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 
-import SwitchBtn from './SwitchBtn';
+import SettingSwitchBtn from '../../../../common/components/SettingSwitchBtn';
 
 const Container = styled.div`
   margin-bottom: 20px;
@@ -37,7 +37,7 @@ function PermissionRowContainer({ title, note }) {
     <Container>
       <LabelRow>
         <span className="title">{title}</span>
-        <SwitchBtn
+        <SettingSwitchBtn
           checked={isChecked}
           onChange={() => {
             setIsChecked(!isChecked);

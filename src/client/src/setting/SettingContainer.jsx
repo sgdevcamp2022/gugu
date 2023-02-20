@@ -27,22 +27,22 @@ const ContentContainer = styled.div`
   grid-template-columns: auto 80px;
 `;
 
-const sidebarSelector = (type) => {
-  switch (type) {
-    case 'SERVER':
-      return SERVER.SIDEBAR;
-    case 'CHANNEL':
-      return CHANNELS.SIDEBAR;
-    case 'USER':
-      return USERS.SIDEBAR;
-    default:
-      return NOTFOUND.SIDEBAR;
-  }
-};
-
 function SettingContainer() {
   const mainContent = useRecoilValue(settingMainContentState);
   const settingType = useRecoilValue(settingTypeState);
+
+  const sidebarSelector = (type) => {
+    switch (type) {
+      case 'SERVER':
+        return SERVER.SIDEBAR;
+      case 'CHANNEL':
+        return CHANNELS.SIDEBAR;
+      case 'USER':
+        return USERS.SIDEBAR;
+      default:
+        return NOTFOUND.SIDEBAR;
+    }
+  };
   return (
     <Box>
       <SideBar sidebar={sidebarSelector(settingType)} />

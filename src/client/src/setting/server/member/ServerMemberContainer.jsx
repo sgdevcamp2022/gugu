@@ -14,26 +14,26 @@ function ServerMemberContainer() {
   const memberInfoArray = [
     {
       src: null,
-      name: 'blackbean99',
-      id: '@blackbean99#1231',
+      name: '이서현',
+      id: '@이서현#1111',
       roleArray: [{ name: '백엔드', color: 'orange' }],
     },
     {
       src: null,
       name: '경주원',
-      id: '@경주원#1231',
+      id: '@경주원#1112',
       roleArray: [{ name: '프론트엔드', color: 'green' }],
     },
     {
       src: null,
       name: '김정인',
-      id: '@주머니알#1231',
+      id: '@김정인#1113',
       roleArray: [{ name: '백엔드', color: 'orange' }],
     },
     {
       src: null,
       name: '이윤성',
-      id: '@이윤성#1231',
+      id: '@이윤성#1114',
       roleArray: null,
     },
   ];

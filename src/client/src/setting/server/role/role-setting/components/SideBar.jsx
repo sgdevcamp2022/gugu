@@ -6,7 +6,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 
 import SideBarRoleBtn from './SideBarRoleBtn';
 import isRoleSettingModeState from '../../../../../recoil/setting/server/isRoleSettingModeState';
-import roleListState from '../../../../../recoil/setting/server/roleListState';
+import roleListState from '../../../../../recoil/setting/common/roleListState';
 import EVERYONE from '../../../../constant/EVERYONE';
 
 const Container = styled.div`
@@ -88,7 +88,12 @@ function SideBar() {
       </TopBar>
 
       {roleList.map((role) => (
-        <SideBarRoleBtn id={role.id} color={role.color} name={role.name} />
+        <SideBarRoleBtn
+          key={role.id}
+          id={role.id}
+          color={role.color}
+          name={role.name}
+        />
       ))}
       <SideBarRoleBtn id={EVERYONE.ID} color="#99aab5" name="@everyone" />
     </Container>
