@@ -46,4 +46,4 @@ FolderRoleRow.defaultProps = {
   name: '새 역할',
 };
 
-export default FolderRoleRow;
+export default React.memo(FolderRoleRow);

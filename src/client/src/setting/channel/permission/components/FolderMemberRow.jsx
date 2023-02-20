@@ -59,4 +59,4 @@ FolderMemberRow.defaultProps = {
   code: '',
 };
 
-export default FolderMemberRow;
+export default React.memo(FolderMemberRow);

@@ -14,6 +14,7 @@ const Box = styled.div`
 
 const Button = styled(SlClose)`
   font-size: 30px;
+  cursor: pointer;
 `;
 
 const Text = styled.div`

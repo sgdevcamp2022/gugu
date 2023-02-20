@@ -100,4 +100,4 @@ AddRoleRow.defaultProps = {
   name: '새 역할',
 };
 
-export default AddRoleRow;
+export default React.memo(AddRoleRow);
