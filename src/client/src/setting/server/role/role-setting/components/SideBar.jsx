@@ -88,7 +88,12 @@ function SideBar() {
       </TopBar>
 
       {roleList.map((role) => (
-        <SideBarRoleBtn id={role.id} color={role.color} name={role.name} />
+        <SideBarRoleBtn
+          key={role.id}
+          id={role.id}
+          color={role.color}
+          name={role.name}
+        />
       ))}
       <SideBarRoleBtn id={EVERYONE.ID} color="#99aab5" name="@everyone" />
     </Container>

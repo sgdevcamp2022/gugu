@@ -6,7 +6,7 @@ import { RiShieldUserFill } from 'react-icons/ri';
 import BackdropModal from '../../../../../common/components/BackdropModal';
 import selectedRoleState from '../../../../../recoil/setting/server/selectedRoleState';
 import SearchBar from '../../../../../common/components/SearchBar';
-import Label from '../layout/Label';
+import Label from '../../../../common/components/Label';
 import AddMemberRow from './AddMemberRow';
 
 const Container = styled.div`

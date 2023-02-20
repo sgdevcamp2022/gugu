@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { SlClose } from 'react-icons/sl';
 
 const Box = styled.div`
+  margin-left: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: center;
 
   color: ${(props) => props.theme.color.secondaryText};
 `;
