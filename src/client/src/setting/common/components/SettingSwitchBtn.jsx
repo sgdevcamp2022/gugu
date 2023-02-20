@@ -54,7 +54,7 @@ const DiscordSwitch = styled((props) => (
   },
 }));
 
-function SwitchBtn({ checked, onChange }) {
+function SettingSwitchBtn({ checked, onChange }) {
   return (
     <div>
       <DiscordSwitch
@@ -67,14 +67,14 @@ function SwitchBtn({ checked, onChange }) {
   );
 }
 
-SwitchBtn.propTypes = {
+SettingSwitchBtn.propTypes = {
   checked: PropTypes.bool,
   onChange: PropTypes.func,
 };
 
-SwitchBtn.defaultProps = {
+SettingSwitchBtn.defaultProps = {
   checked: false,
   onChange: () => {},
 };
 
-export default SwitchBtn;
+export default SettingSwitchBtn;

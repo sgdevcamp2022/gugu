@@ -6,7 +6,7 @@ import Content from '../../../common/components/Content';
 import Heading3 from '../../../common/components/Heading3';
 import DefaultRoleButton from './components/DefaultRoleButton';
 import RoleInfoRow from './components/RoleInfoRow';
-import roleListState from '../../../../recoil/setting/server/roleListState';
+import roleListState from '../../../../recoil/setting/common/roleListState';
 import SearchNavBar from './components/SearchNavBar';
 
 const Description = styled.div`

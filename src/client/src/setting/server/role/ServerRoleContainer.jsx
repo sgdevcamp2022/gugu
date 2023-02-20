@@ -4,7 +4,7 @@ import isRoleSettingModeState from '../../../recoil/setting/server/isRoleSetting
 
 import RoleInfoContainer from './role-information/RoleInfoContainer';
 import RoleSettingContainer from './role-setting/RoleSettingContainer';
-import roleListState from '../../../recoil/setting/server/roleListState';
+import roleListState from '../../../recoil/setting/common/roleListState';
 
 function ServerRoleContainer() {
   const isRoleSettingMode = useRecoilValue(isRoleSettingModeState);
