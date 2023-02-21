@@ -28,7 +28,7 @@ function CreateServerBtn() {
       </Container>
 
       <BackdropModal open={isCreateModalOpen} setOpen={setIsCreateModalOpen}>
-        <CreateServerModal />
+        <CreateServerModal isOpen={isCreateModalOpen} />
       </BackdropModal>
     </>
   );

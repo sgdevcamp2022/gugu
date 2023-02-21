@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import FullScreenBox from '../layout/FullScreenBox';
 import UserSideBar from './common/components/UserSideBar';
+import ServerSideBar from './common/components/ServerSideBar';
 
 const Box = styled(FullScreenBox)`
   display: grid;
@@ -14,7 +15,7 @@ function MainContainer() {
   return (
     <Box>
       <UserSideBar />
-      <div>ddd</div>
+      <ServerSideBar />
       <div>dddd</div>
     </Box>
   );

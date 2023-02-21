@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { PropTypes } from 'prop-types';
 import { BsFillCameraFill } from 'react-icons/bs';
+
 import Label from '../../../setting/common/components/Label';
 import useChangeImgPreview from '../../../hooks/useChangeImgPreview';
-// import useChangeImgPreview from '../../../hooks/useChangeImgPreview';
 
 const Header = styled.div`
   padding: 24px 24px 0;
@@ -121,12 +122,7 @@ const Footer = styled.div`
   }
 `;
 
-function CreateServerModal() {
-  // const example =
-  //   'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Golde33443.jpg/220px-Golde33443.jpg';
-
-  const example = '';
-
+function CreateServerModal({ isOpen }) {
   const [serverImageFile, setServerImageFile] = useState('');
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -134,32 +130,14 @@ function CreateServerModal() {
     setServerImageFile(e.target.files[0]);
   };
 
-  useEffect(() => {
-    const loadThumbnail = async () => {
-      const response = await fetch(example);
-      const blob = await response.blob();
-      setServerImageFile(new File([blob], 'image.jpg', { type: blob.type }));
-      setImagePreview(example);
-    };
-
-    if (!example || example === '') return;
-    loadThumbnail();
-  }, [example]);
-
   useChangeImgPreview(serverImageFile, (e) => {
     setImagePreview(e);
   });
-  // useEffect(() => {
-  //   if (!serverImageFile || serverImageFile === '') {
-  //     return;
-  //   }
-  //
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(serverImageFile);
-  //   reader.onload = () => {
-  //     setImagePreview(reader.result);
-  //   };
-  // }, [serverImageFile]);
+
+  useEffect(() => {
+    setServerImageFile('');
+    setImagePreview(null);
+  }, [isOpen]);
 
   return (
     <>
@@ -201,5 +179,13 @@ function CreateServerModal() {
     </>
   );
 }
+
+CreateServerModal.propTypes = {
+  isOpen: PropTypes.bool,
+};
+
+CreateServerModal.defaultProps = {
+  isOpen: true,
+};
 
 export default CreateServerModal;
