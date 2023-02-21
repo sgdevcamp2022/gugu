@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 
 import SearchBar from '../../../../common/components/SearchBar';
-import Label from '../../../common/components/Label';
+import Label from '../../../../layout/Label';
 import AddRoleRow from './AddRoleRow';
 import AddMemberRow from '../../../common/components/AddMemberRow';
 import roleListState from '../../../../recoil/setting/common/roleListState';

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { SlClose } from 'react-icons/sl';
 import { useSetRecoilState } from 'recoil';
-import privatePageTypeState from '../../../recoil/common/privatePageTypeState';
+import privatePageTypeState from '../../../recoil/common/privatePageType';
 import PRIVATE_PAGE_TYPES from '../../../common/constant/PRIVATE_PAGE_TYPES';
 
 const Box = styled.div`

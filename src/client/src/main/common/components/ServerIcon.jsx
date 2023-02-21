@@ -5,7 +5,6 @@ import UserSideBarIcon from './UserSideBarIcon';
 
 const TextIcon = styled.div`
   position: absolute;
-  z-index: 2;
   color: white;
 `;
 

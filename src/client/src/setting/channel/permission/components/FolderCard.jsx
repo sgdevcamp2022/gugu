@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 
 import FolderHeader from './FolderHeader';
-import Label from '../../../common/components/Label';
+import Label from '../../../../layout/Label';
 import roleListState from '../../../../recoil/setting/common/roleListState';
 import FolderRoleRow from './FolderRoleRow';
 import FolderMemberRow from './FolderMemberRow';

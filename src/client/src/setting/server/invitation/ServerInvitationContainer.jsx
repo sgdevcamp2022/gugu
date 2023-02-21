@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Content from '../../common/components/Content';
-import Heading3 from '../../common/components/Heading3';
+import Heading3 from '../../../layout/Heading3';
 import InviteRow from './components/InviteRow';
 
 const Description = styled.div`

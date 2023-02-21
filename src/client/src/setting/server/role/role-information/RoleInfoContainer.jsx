@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
 
 import Content from '../../../common/components/Content';
-import Heading3 from '../../../common/components/Heading3';
+import Heading3 from '../../../../layout/Heading3';
 import DefaultRoleButton from './components/DefaultRoleButton';
 import RoleInfoRow from './components/RoleInfoRow';
 import roleListState from '../../../../recoil/setting/common/roleListState';

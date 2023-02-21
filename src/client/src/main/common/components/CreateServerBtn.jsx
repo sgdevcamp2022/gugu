@@ -5,7 +5,9 @@ import UserSideBarIcon from './UserSideBarIcon';
 import BackdropModal from '../../../common/components/BackdropModal';
 import CreateServerModal from './CreateServerModal';
 
-const Container = styled(UserSideBarIcon)`
+const Container = styled.div``;
+
+const Button = styled(UserSideBarIcon)`
   font-size: 24px;
   color: ${(props) => props.theme.color.green};
 
@@ -18,20 +20,20 @@ const Container = styled(UserSideBarIcon)`
 function CreateServerBtn() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   return (
-    <>
-      <Container
+    <Container>
+      <Button
         onClick={() => {
           setIsCreateModalOpen(true);
         }}
       >
         <IoAdd />
-      </Container>
+      </Button>
 
       <BackdropModal open={isCreateModalOpen} setOpen={setIsCreateModalOpen}>
         <CreateServerModal isOpen={isCreateModalOpen} />
       </BackdropModal>
-    </>
+    </Container>
   );
 }
 
-export default CreateServerBtn;
+export default React.memo(CreateServerBtn);

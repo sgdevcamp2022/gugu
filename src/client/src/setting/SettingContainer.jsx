@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
-import SERVER from './constant/SERVERS';
+import SERVERS from './constant/SERVERS';
 import CHANNELS from './constant/CHANNELS';
 import USERS from './constant/USERS';
 import NOTFOUND from './constant/NOTFOUND';
@@ -28,13 +28,13 @@ const ContentContainer = styled.div`
 `;
 
 function SettingContainer() {
-  const mainContent = useRecoilValue(settingMainContentState);
+  const [mainContent, setMainContent] = useRecoilState(settingMainContentState);
   const settingType = useRecoilValue(settingTypeState);
 
   const sidebarSelector = (type) => {
     switch (type) {
       case 'SERVER':
-        return SERVER.SIDEBAR;
+        return SERVERS.SIDEBAR;
       case 'CHANNEL':
         return CHANNELS.SIDEBAR;
       case 'USER':
@@ -43,6 +43,24 @@ function SettingContainer() {
         return NOTFOUND.SIDEBAR;
     }
   };
+
+  useEffect(() => {
+    const initMainContent = () => {
+      switch (settingType) {
+        case 'SERVER':
+          return setMainContent(SERVERS.SIDEBAR.categories[0].list[0].content);
+        case 'CHANNEL':
+          return setMainContent(CHANNELS.SIDEBAR.categories[0].list[0].content);
+        case 'USER':
+          return setMainContent(USERS.SIDEBAR.categories[0].list[0].content);
+        default:
+          return setMainContent(<div style={{ color: 'red' }}>Not Found</div>);
+      }
+    };
+
+    initMainContent();
+  }, [settingType]);
+
   return (
     <Box>
       <SideBar sidebar={sidebarSelector(settingType)} />

@@ -1,7 +1,7 @@
 const Theme = {
   color: {
     primaryBg: '#36393F',
-    secondaryBg: '#2F3136',
+    secondaryBg: '#2b2d31',
 
     hoverBg: '#4F545C66',
     selectedBg: '#4f545c99',

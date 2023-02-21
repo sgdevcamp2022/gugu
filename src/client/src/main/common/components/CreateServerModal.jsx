@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import { BsFillCameraFill } from 'react-icons/bs';
 
-import Label from '../../../setting/common/components/Label';
+import Label from '../../../layout/Label';
 import useChangeImgPreview from '../../../hooks/useChangeImgPreview';
 
 const Header = styled.div`

@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Content from '../../common/components/Content';
-import Heading3 from '../../common/components/Heading3';
-import Label from '../../common/components/Label';
+import Heading3 from '../../../layout/Heading3';
+import Label from '../../../layout/Label';
 
 const ChannelName = styled.input`
   width: calc(100% - 20px);
