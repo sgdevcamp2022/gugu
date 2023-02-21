@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import useChangeImgPreview from '../../../../hooks/useChangeImgPreview';
 
 const ImageBox = styled.div`
   display: flex;
@@ -135,15 +136,15 @@ function ImageContainer() {
 
   const example = '';
 
-  const [image, setImage] = useState('');
+  const [imageFile, setImageFile] = useState('');
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleImageUpload = (e) => {
-    setImage(e.target.files[0]);
+    setImageFile(e.target.files[0]);
   };
 
   const handleImageRemove = () => {
-    setImage('');
+    setImageFile('');
     setImagePreview(null);
   };
 
@@ -151,7 +152,7 @@ function ImageContainer() {
     const loadThumbnail = async () => {
       const response = await fetch(example);
       const blob = await response.blob();
-      setImage(new File([blob], 'image.jpg', { type: blob.type }));
+      setImageFile(new File([blob], 'image.jpg', { type: blob.type }));
       setImagePreview(example);
     };
 
@@ -159,17 +160,9 @@ function ImageContainer() {
     loadThumbnail();
   }, [example]);
 
-  useEffect(() => {
-    if (!image || image === '') {
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.readAsDataURL(image);
-    reader.onload = (e) => {
-      setImagePreview(e.target.result);
-    };
-  }, [image]);
+  useChangeImgPreview(imageFile, (e) => {
+    setImagePreview(e);
+  });
 
   return (
     <ImageBox>
@@ -179,7 +172,7 @@ function ImageContainer() {
             backgroundImage: `url(${imagePreview})`,
           }}
         >
-          {!image && <div className="image-uploader-acronym">G</div>}
+          {!imageFile && <div className="image-uploader-acronym">G</div>}
           <HiddenFileInput
             className="image-uploader-input"
             type="file"
