@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SlClose } from 'react-icons/sl';
+import { useSetRecoilState } from 'recoil';
+import privatePageTypeState from '../../../recoil/common/privatePageTypeState';
+import PRIVATE_PAGE_TYPES from '../../../common/constant/PRIVATE_PAGE_TYPES';
 
 const Box = styled.div`
   margin-left: auto;
@@ -22,9 +25,14 @@ const Text = styled.div`
 `;
 
 function SettingCloseButton() {
+  const setPrivatePageType = useSetRecoilState(privatePageTypeState);
   return (
     <Box>
-      <Button />
+      <Button
+        onClick={() => {
+          setPrivatePageType(PRIVATE_PAGE_TYPES.MAIN);
+        }}
+      />
       <Text>ESC</Text>
     </Box>
   );
