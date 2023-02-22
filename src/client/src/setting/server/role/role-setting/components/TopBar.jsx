@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { RiMoreFill } from 'react-icons/ri';
 
-import Heading3 from '../../../../common/components/Heading3';
+import Heading3 from '../../../../../layout/Heading3';
 import selectedRoleState from '../../../../../recoil/setting/server/selectedRoleState';
 import RoleDeleteBtn from '../../common/components/RoleDeleteBtn';
 import ROLE_SETTING_TYPES from '../../../../constant/ROLE_SETTING_TYPES';

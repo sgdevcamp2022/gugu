@@ -5,34 +5,35 @@ import { useRecoilValue } from 'recoil';
 // import ServerContainer from './SERVER/ServerContainer';
 import SettingContainer from './setting/SettingContainer';
 import Theme from './styles/Theme';
-import privatePageTypeState from './recoil/common/privatePageTypeState';
+import privatePageTypeState from './recoil/common/privatePageType';
 import PRIVATE_PAGE_TYPES from './common/constant/PRIVATE_PAGE_TYPES';
+import MainContainer from './main/MainContainer';
 
 function PrivateRouter() {
-  const privatePageType = useRecoilValue(privatePageTypeState)
+  const privatePageType = useRecoilValue(privatePageTypeState);
 
   switch (privatePageType) {
     case PRIVATE_PAGE_TYPES.MAIN:
-      return <div>main page</div>
+      return <MainContainer />;
     case PRIVATE_PAGE_TYPES.SETTING:
-      return <SettingContainer />
+      return <SettingContainer />;
     default:
-      return <div>default</div>
+      return <MainContainer />;
   }
 }
 
 function PublicRouter() {}
 
 function AppRouter() {
-  const isLogIn = !! localStorage.getItem('accessToken');
+  const isLogIn = !!localStorage.getItem('accessToken');
 
   switch (isLogIn) {
     case true:
-      return <PrivateRouter />
+      return <PrivateRouter />;
     case false:
-      return <PublicRouter />
+      return <PublicRouter />;
     default:
-      return <PublicRouter />
+      return <PublicRouter />;
   }
 }
 

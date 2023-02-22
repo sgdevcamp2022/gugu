@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Label from '../../../../common/components/Label';
+import Label from '../../../../../layout/Label';
 
 const NameBox = styled.div`
   width: 100%;

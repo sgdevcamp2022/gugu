@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import NavBar from './components/NavBar';
 import MemberInfoContainer from './components/MemberInfoContainer';
-import Heading3 from '../../common/components/Heading3';
+import Heading3 from '../../../layout/Heading3';
 import Content from '../../common/components/Content';
 
 const Divider = styled.div`

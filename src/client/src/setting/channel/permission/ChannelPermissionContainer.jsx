@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { HiOutlineRefresh } from 'react-icons/hi';
 
 import Content from '../../common/components/Content';
-import Heading3 from '../../common/components/Heading3';
+import Heading3 from '../../../layout/Heading3';
 import SettingCard from './components/SettingCard';
 
 const Description = styled.div`
