@@ -3,16 +3,19 @@ import styled from 'styled-components';
 import { IoChevronDown, IoClose } from 'react-icons/io5';
 
 import useOutsideClick from '../../../hooks/useOutsideClick';
-import ServerSideBarInviteBtn from './ServerSideBarInviteBtn';
+import HeaderInviteBtn from './HeaderInviteBtn';
 import ServerSideBarSettingBtn from './ServerSideBarSettingBtn';
-import ServerSideBarChannelBtn from './ServerSideBarChannelBtn';
-import ServerSideBarCategoryBtn from './ServerSideBarCategoryBtn';
+import HeaderChannelBtn from './HeaderChannelBtn';
+import HeaderCategoryBtn from './HeaderCategoryBtn';
 
-const Container = styled.div``;
+const Container = styled.div`
+  position: relative;
+`;
 
 const Header = styled.div`
-  height: 24px;
+  width: 100%;
   padding: 12px 16px;
+  box-sizing: border-box;
 
   display: flex;
   justify-content: space-between;
@@ -33,6 +36,9 @@ const Header = styled.div`
 
   .icon {
     margin-left: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 18px;
     color: ${(props) => props.theme.color.secondaryText};
   }
@@ -42,8 +48,8 @@ const DarkModal = styled.div`
   width: 204px;
   padding: 6px 8px;
 
-  position: relative;
-  top: 10px;
+  position: absolute;
+  top: 55px;
   left: 10px;
   z-index: 1;
 
@@ -74,12 +80,12 @@ function ServerSideBarHeader() {
 
       {isServerModalOpen && (
         <DarkModal ref={serverModalRef}>
-          <ServerSideBarInviteBtn />
+          <HeaderInviteBtn />
           <ServerSideBarSettingBtn
             setIsServerModalOpen={setIsServerModalOpen}
           />
-          <ServerSideBarChannelBtn />
-          <ServerSideBarCategoryBtn />
+          <HeaderChannelBtn />
+          <HeaderCategoryBtn />
         </DarkModal>
       )}
     </Container>

@@ -27,22 +27,22 @@ const ContentContainer = styled.div`
   grid-template-columns: auto 80px;
 `;
 
+const sidebarSelector = (type) => {
+  switch (type) {
+    case 'SERVER':
+      return SERVERS.SIDEBAR;
+    case 'CHANNEL':
+      return CHANNELS.SIDEBAR;
+    case 'USER':
+      return USERS.SIDEBAR;
+    default:
+      return NOTFOUND.SIDEBAR;
+  }
+};
+
 function SettingContainer() {
   const [mainContent, setMainContent] = useRecoilState(settingMainContentState);
   const settingType = useRecoilValue(settingTypeState);
-
-  const sidebarSelector = (type) => {
-    switch (type) {
-      case 'SERVER':
-        return SERVERS.SIDEBAR;
-      case 'CHANNEL':
-        return CHANNELS.SIDEBAR;
-      case 'USER':
-        return USERS.SIDEBAR;
-      default:
-        return NOTFOUND.SIDEBAR;
-    }
-  };
 
   useEffect(() => {
     const initMainContent = () => {

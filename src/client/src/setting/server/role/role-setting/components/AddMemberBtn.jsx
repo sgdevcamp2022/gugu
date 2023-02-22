@@ -163,7 +163,7 @@ function AddMemberBtn() {
           <MemberList>
             <Label>멤버</Label>
 
-            <AddMemberRow />
+            <AddMemberRow name="김정인" code="#1112" />
           </MemberList>
 
           <BottomBar>

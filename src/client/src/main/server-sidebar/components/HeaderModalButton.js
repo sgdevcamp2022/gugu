@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const ServerSideBarModalButton = styled.div`
+const HeaderModalButton = styled.div`
   width: 188px;
   height: 20px;
   margin: 2px 0;
@@ -39,4 +39,4 @@ const ServerSideBarModalButton = styled.div`
   }
 `;
 
-export default ServerSideBarModalButton;
+export default HeaderModalButton;
