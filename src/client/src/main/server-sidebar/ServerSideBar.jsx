@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ServerSideBarHeader from './ServerSideBarHeader';
+import ServerSideBarHeader from './components/ServerSideBarHeader';
 
 const Container = styled.div`
   background-color: ${(props) => props.theme.color.secondaryBg};

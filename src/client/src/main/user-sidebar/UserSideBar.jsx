@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import ServerIcon from './ServerIcon';
-import CreateServerBtn from './CreateServerBtn';
+import ServerIcon from './components/ServerIcon';
+import CreateServerBtn from './components/CreateServerBtn';
 
 const Container = styled.div`
   padding-top: 12px;

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import FullScreenBox from '../layout/FullScreenBox';
-import UserSideBar from './common/components/UserSideBar';
-import ServerSideBar from './common/components/ServerSideBar';
+import UserSideBar from './user-sidebar/UserSideBar';
+import ServerSideBar from './server-sidebar/ServerSideBar';
 
 const Box = styled(FullScreenBox)`
   display: grid;
