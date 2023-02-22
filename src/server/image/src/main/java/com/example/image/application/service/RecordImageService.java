@@ -26,7 +26,7 @@ public class RecordImageService implements RecordImageUseCase {
     @Override
     public String storeImage(MultipartFile image) {
         String imageName = StringUtils.cleanPath(image.getOriginalFilename());
-        Path location = Paths.get(uploadDir + File.separator + imageName);
+        Path location = Paths.get(Paths.get(uploadDir) + File.separator + imageName);
         try {
             Files.copy(image.getInputStream(), location, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException exception) {
