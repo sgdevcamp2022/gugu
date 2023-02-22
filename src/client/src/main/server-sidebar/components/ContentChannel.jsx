@@ -13,6 +13,7 @@ import privatePageType from '../../../recoil/common/privatePageType';
 import settingTypeState from '../../../recoil/setting/common/settingTypeState';
 import PRIVATE_PAGE_TYPES from '../../../common/constant/PRIVATE_PAGE_TYPES';
 import SETTING_TYPES from '../../../setting/constant/SETTING_TYPES';
+import mainMainContentState from '../../../recoil/main/common/mainMainContentState';
 
 const Container = styled.div`
   height: 34px;
@@ -81,10 +82,15 @@ function ContentChannel({ type, name }) {
   const [isInviteModalOpen, setIsInviteModalOpen] = useState(false);
   const setPrivatePageType = useSetRecoilState(privatePageType);
   const setSettingsType = useSetRecoilState(settingTypeState);
+  const setMainMainContent = useSetRecoilState(mainMainContentState);
   return (
     <>
       <Container>
-        <LabelBox>
+        <LabelBox
+          onClick={() => {
+            setMainMainContent(<div>{name}</div>);
+          }}
+        >
           <div className="type-icon">
             {type === 'voice' ? <HiVolumeUp /> : <BiHash />}
           </div>
@@ -125,4 +131,4 @@ ContentChannel.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default ContentChannel;
+export default React.memo(ContentChannel);

@@ -46,10 +46,9 @@ const Container = styled.div`
   }
 `;
 
-function ContentCategory({ name, id, channels }) {
+function ContentCategory({ name, channels }) {
   const [isDetailClicked, setIsDetailClicked] = useState(false);
   const [isCreateClicked, setIsCreateClicked] = useState(false);
-  console.log(id);
 
   const handleCategoryClick = () => {
     setIsDetailClicked(!isDetailClicked);
@@ -103,8 +102,7 @@ function ContentCategory({ name, id, channels }) {
 
 ContentCategory.propTypes = {
   name: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
   channels: PropTypes.arrayOf, //eslint-disable-line
 };
 
-export default ContentCategory;
+export default React.memo(ContentCategory);

@@ -57,7 +57,6 @@ function ServerSideBarContent() {
         <ContentCategory
           key={category.id}
           name={category.name}
-          id={category.id}
           channels={category.channels}
         />
       ))}
